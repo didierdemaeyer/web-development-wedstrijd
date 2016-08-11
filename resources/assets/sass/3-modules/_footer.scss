@@ -1,0 +1,21 @@
+#footer {
+  padding: 20px 0;
+  background-color: $grey;
+  text-align: center;
+
+
+  .footer-logo {
+    position: relative;
+    height: 100px
+  }
+
+  a {
+    margin: 0 20px;
+    color: #aaa;
+    text-decoration: none;
+
+    &.active {
+      color: #fff;
+    }
+  }
+}

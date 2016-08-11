@@ -1,2 +1,18 @@
-// @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 
+@import "1-tools/normalize";
+@import "1-tools/vars";
+//@import "1-tools/fonts";
+
+@import "2-basics/base";
+@import "2-basics/typography";
+//@import "2-basics/links";
+//@import "2-basics/selection-colors";
+
+@import "3-modules/header";
+@import "3-modules/footer";
+@import "3-modules/main-nav";
+@import "3-modules/entries-list";
+
+@import "4-pages/home-page";
+@import "4-pages/entries-page";

@@ -1,0 +1,44 @@
+#entries-container {
+
+  header {
+    height: 100px;
+
+    .call-to-action {
+      top: 50%;
+      text-align: center;
+
+      p,
+      .btn-cta {
+        display: inline;
+      }
+
+      .btn-cta {
+        margin-top: -15px;
+        margin-left: 50px;
+      }
+    }
+  }
+
+  .sort-entries {
+    text-align: center;
+    margin: 30px auto;
+
+    a {
+      color: $grey;
+      padding: 5px;
+      margin: 0 10px;
+      font-size: 25px;
+
+
+      &:hover {
+        text-decoration: none;
+        color: $red;
+        border-bottom: 3px solid $red;
+      }
+
+      &.active {
+        color: $red;
+      }
+    }
+  }
+}
