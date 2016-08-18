@@ -12,7 +12,16 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'firstname',
+        'lastname',
+        'email',
+        'password',
+        'street',
+        'street_nr',
+        'postcode',
+        'city',
+        'country',
+        'ip_address',
     ];
 
     /**
@@ -23,4 +32,28 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function role()
+    {
+        return $this->belongsTo('App\Role');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function photos()
+    {
+        return $this->hasMany('App\Photo');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function votes()
+    {
+        return $this->belongsToMany('App\Photo', 'votes');
+    }
 }
