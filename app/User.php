@@ -44,6 +44,14 @@ class User extends Authenticatable
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
+    public function social_accounts()
+    {
+        return $this->hasMany('App\SocialAccount');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function photos()
     {
         return $this->hasMany('App\Photo');
