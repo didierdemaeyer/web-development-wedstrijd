@@ -30,8 +30,15 @@
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="{{ route('auth.login') }}">Login</a></li>
-          <li class="bg-primary"><a href="{{ route('auth.register') }}">Sign up</a></li>
+          @if(\Auth::check())
+            <li><a href="#">My entries</a></li>
+            <li><a href="#">My votes</a></li>
+            <li><a href="#">Settings</a></li>
+            <li><a href="{{ route('auth.logout') }}">Logout</a></li>
+          @else
+            <li><a href="{{ route('auth.login') }}">Login</a></li>
+            <li class="bg-primary"><a href="{{ route('auth.register') }}">Sign up</a></li>
+          @endif
         </ul>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->

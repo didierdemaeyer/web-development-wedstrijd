@@ -6048,6 +6048,19 @@ header {
     #main-nav .bg-primary a:hover {
       background-color: #d52317; }
 
+#auth-container .form-container {
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 15px;
+  background-color: #2A2A2A;
+  color: #fff; }
+
+#auth-container h1 {
+  color: #fff; }
+
+#auth-container label {
+  font-weight: 300; }
+
 .entries-list {
   margin: 20px 40px; }
   .entries-list::after {

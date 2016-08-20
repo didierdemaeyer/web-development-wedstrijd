@@ -1,0 +1,19 @@
+#auth-container {
+
+  .form-container {
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 15px;
+
+    background-color: $grey;
+    color: #fff;
+  }
+
+  h1 {
+    color: #fff;
+  }
+
+  label {
+    font-weight: 300;
+  }
+}

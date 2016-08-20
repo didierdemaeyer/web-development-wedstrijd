@@ -2,19 +2,31 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LoginFormRequest;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 
 class AuthController extends Controller
 {
+    /**
+     * @return mixed
+     */
     public function getLogin()
     {
-        dd('not implemented yet!');
+        return view('auth.login');
     }
 
-    public function postLogin(Request $request)
+    /**
+     * @param LoginFormRequest $request
+     * @return $this
+     */
+    public function postLogin(LoginFormRequest $request)
     {
-        dd('not implemented yet!');
+        if (\Auth::attempt(['email' => $request->get('email'), 'password' => $request->get('password')], true)) {
+            return redirect()->intended('/');
+        }
+
+        return redirect()->back()->withInput();
     }
 
     public function getRegister()
@@ -25,5 +37,12 @@ class AuthController extends Controller
     public function postRegister(Request $request)
     {
         dd('not implemented yet!');
+    }
+
+    public function logout()
+    {
+        \Auth::logout();
+
+        return redirect()->route('home');
     }
 }

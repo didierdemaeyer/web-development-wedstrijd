@@ -6,7 +6,7 @@
 
       <div class="overlay">
         <div class="call-to-action">
-          <p>Share a beautiful landscape and win The North Face equipment.</p>
+          <p>Share a beautiful landscape and win The North Face&reg; equipment.</p>
           <button class="btn btn-cta"><a href="{{ route('participate') }}">Submit Photo</a></button>
           <div class="period-end"></div>
         </div>
@@ -32,6 +32,14 @@
       <div class="grid-item entry"><img src="" alt=""></div>
       <div class="grid-item entry"><img src="" alt=""></div>
       <div class="grid-item entry"><img src="" alt=""></div>
+
+      <div class="grid-item entry">View all entries</div>
+    </div>
+
+    <h1>Previous winners</h1>
+
+    <div class="previous-winners">
+
     </div>
   </div>
 @stop
