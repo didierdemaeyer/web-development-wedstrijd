@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>@yield('title', 'Photo Contest - The North Face')</title>
-  <link rel="stylesheet" href="{{ asset('assets/css/style.css', env('HTTPS')) }}">
+  <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
   @yield('styles')
 </head>
 <body>
@@ -19,7 +19,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a href="{{ route('home') }}"><img id="nav-logo" src="{{ asset('assets/images/the-northface-logo-small.jpg', env('HTTPS')) }}" alt="logo"></a>
+        <a href="{{ route('home') }}"><img id="nav-logo" src="{{ asset('assets/images/the-northface-logo-small.jpg') }}" alt="logo"></a>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
@@ -52,7 +52,7 @@
   </div>
 
   <footer id="footer">
-    <img class="footer-logo" src="{{ asset('assets/images/the-northface-logo-small.jpg', env('HTTPS')) }}" alt="logo">
+    <img class="footer-logo" src="{{ asset('assets/images/the-northface-logo-small.jpg') }}" alt="logo">
     <a {{ (Request::is('/') ? 'class=active' : '') }} href="{{ route('home') }}">Home</a>
     <a {{ (Request::is('entries/*') ? 'class=active' : '') }} href="{{ route('entries.popular') }}">Entries</a>
   </footer>
@@ -60,8 +60,8 @@
 
 <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
-<script src="{{ asset('assets/js/plugins/masonry.pkgd.min.js', env('HTTPS')) }}"></script>
-<script src="{{ asset('assets/js/scripts.js', env('HTTPS')) }}"></script>
+<script src="{{ asset('assets/js/plugins/masonry.pkgd.min.js') }}"></script>
+<script src="{{ asset('assets/js/scripts.js') }}"></script>
 @yield('scripts')
 </body>
 </html>
