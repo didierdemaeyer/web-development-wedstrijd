@@ -7,6 +7,14 @@
 
     <div class="form-container">
       <h1 class="big">Login</h1>
+
+      <div class="social">
+        <a href="{{ route('social.redirect', ['provider' => 'facebook']) }}" class="btn btn-block btn-social btn-facebook"><span class="fa fa-facebook"></span>Sign in with Facebook</a>
+        <a href="{{ route('social.redirect', ['provider' => 'google']) }}" class="btn btn-block btn-social btn-google"><span class="fa fa-google"></span>Sign in with Google</a>
+      </div>
+
+      <hr class="or-line">
+
       {!! Form::open(['route' => 'auth.login.post']) !!}
         <div class="form-group">
           <label for="email">Email address</label>
