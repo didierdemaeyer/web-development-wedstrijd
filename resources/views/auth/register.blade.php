@@ -53,8 +53,10 @@
           {!! Form::text('country', null, ['id' => 'country', 'class' => 'form-control', 'placeholder' => 'Country']) !!}
         </div>
 
-        <button type="submit" class="btn btn-default">Register</button>
+        <button type="submit" class="btn btn-default btn-submit">Register</button>
       {!! Form::close() !!}
+
+      <hr>
 
       <p>Already have an account? <a href="{{ route('auth.login') }}">Log in</a></p>
     </div>

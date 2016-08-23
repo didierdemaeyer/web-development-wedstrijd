@@ -25,8 +25,10 @@
           {!! Form::password('password', ['id' => 'password', 'class' => 'form-control', 'placeholder' => 'Password', 'required']) !!}
         </div>
 
-        <button type="submit" class="btn btn-default">Log in</button>
+        <button type="submit" class="btn btn-default btn-submit">Log in</button>
       {!! Form::close() !!}
+
+      <hr>
 
       <p>Don't have an account yet? <a href="{{ route('auth.register') }}">Register</a></p>
     </div>
