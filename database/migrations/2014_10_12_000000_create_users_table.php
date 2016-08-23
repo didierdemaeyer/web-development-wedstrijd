@@ -19,11 +19,10 @@ class CreateUsersTable extends Migration
             $table->string('lastname');
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('street');
-            $table->string('street_nr');
-            $table->string('postcode');
-            $table->string('city');
-            $table->string('country');
+            $table->string('address')->nullable();
+            $table->string('postcode')->nullable();
+            $table->string('city')->nullable();
+            $table->string('country')->nullable();
             $table->string('ip_address');
             $table->integer('role_id')->unsigned();
             $table->rememberToken();

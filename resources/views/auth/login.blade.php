@@ -17,15 +17,15 @@
 
       {!! Form::open(['route' => 'auth.login.post']) !!}
         <div class="form-group">
-          <label for="email">Email address</label>
-          {!! Form::email('email', null, ['id' => 'email', 'class' => 'form-control', 'placeholder' => 'Email']) !!}
+          <label for="email">Email address <span class="required" title="Required">*</span></label>
+          {!! Form::email('email', null, ['id' => 'email', 'class' => 'form-control', 'placeholder' => 'Email', 'required']) !!}
         </div>
         <div class="form-group">
-          <label for="password">Password</label>
-          {!! Form::password('password', ['id' => 'password', 'class' => 'form-control', 'placeholder' => 'Password']) !!}
+          <label for="password">Password <span class="required" title="Required">*</span></label>
+          {!! Form::password('password', ['id' => 'password', 'class' => 'form-control', 'placeholder' => 'Password', 'required']) !!}
         </div>
 
-        <button type="submit" class="btn btn-default">Submit</button>
+        <button type="submit" class="btn btn-default">Log in</button>
       {!! Form::close() !!}
     </div>
 

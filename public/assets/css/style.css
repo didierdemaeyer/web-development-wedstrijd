@@ -6953,6 +6953,9 @@ header {
 #auth-container label {
   font-weight: 300; }
 
+.form-group .required {
+  color: #c0392b; }
+
 .entries-list {
   margin: 20px 40px; }
   .entries-list::after {

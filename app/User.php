@@ -17,8 +17,7 @@ class User extends Authenticatable
         'lastname',
         'email',
         'password',
-        'street',
-        'street_nr',
+        'address',
         'postcode',
         'city',
         'country',
@@ -34,6 +33,16 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * Mutator to automatically hash the password
+     *
+     * @param $pass
+     */
+    public function setPasswordAttribute($pass)
+    {
+        $this->attributes['password'] = bcrypt($pass);
+    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

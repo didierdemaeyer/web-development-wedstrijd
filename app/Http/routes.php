@@ -6,8 +6,8 @@ Route::group(['middelware' => 'web'], function () {
     // Auth
     Route::get('login', ['as' => 'auth.login', 'uses' => 'AuthController@getLogin']);
     Route::post('login', ['as' => 'auth.login.post', 'uses' => 'AuthController@postLogin']);
-    Route::get('sign-up', ['as' => 'auth.register', 'uses' => 'AuthController@getRegister']);
-    Route::post('sign-up', ['as' => 'auth.register.post', 'uses' => 'AuthController@postRegister']);
+    Route::get('register', ['as' => 'auth.register', 'uses' => 'AuthController@getRegister']);
+    Route::post('register', ['as' => 'auth.register.post', 'uses' => 'AuthController@postRegister']);
     Route::get('logout', ['as' => 'auth.logout', 'uses' => 'AuthController@logout']);
 
     // Socialite oAuth routes
