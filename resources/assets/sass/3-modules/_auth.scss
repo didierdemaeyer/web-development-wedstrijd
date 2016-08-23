@@ -3,14 +3,15 @@
   .form-container {
     max-width: 500px;
     margin: 20px auto;
-    padding: 15px;
+    padding: 20px;
 
-    background-color: $grey;
-    color: #fff;
+    color: $gray;
+    border: 1px solid $lightgray;
+    border-radius: 1px;
   }
 
   h1 {
-    color: #fff;
+    color: $gray;
   }
 
   label {

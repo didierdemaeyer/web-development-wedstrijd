@@ -1,5 +1,6 @@
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 
+@import "1-tools/plugins/bootstrap-social";
 @import "1-tools/normalize";
 @import "1-tools/vars";
 //@import "1-tools/fonts";
@@ -11,6 +12,7 @@
 
 @import "3-modules/header";
 @import "3-modules/footer";
+@import "3-modules/notifications";
 @import "3-modules/main-nav";
 @import "3-modules/auth";
 @import "3-modules/entries-list";

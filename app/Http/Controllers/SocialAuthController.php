@@ -36,6 +36,12 @@ class SocialAuthController extends Controller
     {
         $data = $service->createOrGetUser(Socialite::driver($provider));
 
+        if ($data['type'] === 'access_denied') {
+            showErrors(['Account access denied. Please accept the information request.']);
+
+            return redirect()->route('auth.login');
+        }
+
         auth()->login($data['user']);
 
         // if the user registered with OAuth

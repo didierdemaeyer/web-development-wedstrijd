@@ -22,7 +22,13 @@ class SocialAccountService
      */
     public function createOrGetUser(Provider $provider)
     {
-        $this->providerUser = $provider->user();
+        try {
+            $this->providerUser = $provider->user();
+        } catch (\Exception $e) {
+            return [
+                'type' => 'access_denied',
+            ];
+        }
         $this->providerName = class_basename($provider);
 
         $account = SocialAccount::whereProvider($this->providerName)
