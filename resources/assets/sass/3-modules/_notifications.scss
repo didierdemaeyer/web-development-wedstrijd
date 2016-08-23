@@ -5,17 +5,13 @@
   .notification {
     border-radius: 0;
     opacity: 1;
-
-    &:last-child {
-      margin-bottom: 20px;
-    }
+    cursor: pointer;
 
     p {
       position: relative;
       display: block;
       margin: 0;
       padding: 10px 20px 10px 20px;
-      cursor: pointer;
 
       .btn-close {
         position: absolute;
@@ -30,51 +26,42 @@
     }
   }
 
-  //.error {
-  //  color: $red;
-  //
-  //  p {
-  //    border-bottom: 1px solid $red;
-  //  }
-  //}
-  //
-  //.success {
-  //  color: $green;
-  //
-  //  p {
-  //    border-bottom: 1px solid $green;
-  //  }
-  //}
-  //
-  //.info {
-  //  color: $blue;
-  //
-  //  p {
-  //    border-bottom: 1px solid $blue;
-  //  }
-  //}
+  .success {
+    color: $success;
+    background-color: lighten($success, 50%);
 
-  //
-  // FULL BORDERS TEST
-  //
+    border-left: 1px solid $success;
+    border-bottom: 1px solid $success;
+    border-right: 1px solid $success;
 
-  //.success {
-  //  color: $green;
-  //
-  //  p {
-  //    display: block;
-  //    margin: 0;
-  //    padding: 10px 0 10px 30px;
-  //
-  //    border-left: 1px solid $green;
-  //    border-bottom: 1px solid $green;
-  //    border-right: 1px solid $green;
-  //  }
-  //
-  //  &:first-child {
-  //    p {
-  //      border: 1px solid $green;
-  //    }
-  //  }
-  //}
+    &:first-child {
+      border: 1px solid $success;
+    }
+  }
+
+  .error {
+    color: $error;
+    background-color: lighten($error, 50%);
+
+    border-left: 1px solid $error;
+    border-bottom: 1px solid $error;
+    border-right: 1px solid $error;
+
+    &:first-child {
+      border: 1px solid $error;
+    }
+  }
+
+  .info {
+    color: $info;
+    background-color: lighten($info, 50%);
+
+    border-left: 1px solid $info;
+    border-bottom: 1px solid $info;
+    border-right: 1px solid $info;
+  
+    &:first-child {
+        border: 1px solid $info;
+    }
+  }
 }

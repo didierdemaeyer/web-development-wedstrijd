@@ -15,7 +15,7 @@
       <div class="overlay">
         <div class="call-to-action">
           <p>Share a beautiful landscape.</p>
-          <button class="btn btn-cta"><a href="{{ route('participate') }}">Submit Photo</a></button>
+          <button class="btn btn-cta"><a href="{{ route('participate') }}">Upload photo</a></button>
         </div>
       </div>
 

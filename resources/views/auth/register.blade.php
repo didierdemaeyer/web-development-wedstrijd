@@ -55,6 +55,8 @@
 
         <button type="submit" class="btn btn-default">Register</button>
       {!! Form::close() !!}
+
+      <p>Already have an account? <a href="{{ route('auth.login') }}">Log in</a></p>
     </div>
 
   </div>

@@ -6897,15 +6897,13 @@ header {
   width: 100%; }
   #notifications .notification {
     border-radius: 0;
-    opacity: 1; }
-    #notifications .notification:last-child {
-      margin-bottom: 20px; }
+    opacity: 1;
+    cursor: pointer; }
     #notifications .notification p {
       position: relative;
       display: block;
       margin: 0;
-      padding: 10px 20px 10px 20px;
-      cursor: pointer; }
+      padding: 10px 20px 10px 20px; }
       #notifications .notification p .btn-close {
         position: absolute;
         top: 10px;
@@ -6914,6 +6912,30 @@ header {
       @media (max-width: 600px) {
         #notifications .notification p {
           padding-left: 10px; } }
+  #notifications .success {
+    color: #27ae60;
+    background-color: #ddf7e8;
+    border-left: 1px solid #27ae60;
+    border-bottom: 1px solid #27ae60;
+    border-right: 1px solid #27ae60; }
+    #notifications .success:first-child {
+      border: 1px solid #27ae60; }
+  #notifications .error {
+    color: #c0392b;
+    background-color: #fbf0ef;
+    border-left: 1px solid #c0392b;
+    border-bottom: 1px solid #c0392b;
+    border-right: 1px solid #c0392b; }
+    #notifications .error:first-child {
+      border: 1px solid #c0392b; }
+  #notifications .info {
+    color: #2980b9;
+    background-color: #e7f2fa;
+    border-left: 1px solid #2980b9;
+    border-bottom: 1px solid #2980b9;
+    border-right: 1px solid #2980b9; }
+    #notifications .info:first-child {
+      border: 1px solid #2980b9; }
 
 #main-nav {
   position: fixed;

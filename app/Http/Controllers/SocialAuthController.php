@@ -46,6 +46,8 @@ class SocialAuthController extends Controller
 
         // if the user registered with OAuth
         if ($data['is_new']) {
+            showSuccess(['Thanks for registering.']);
+
             // TODO: redirect to settings or an update information page to fill in remaining info
             return redirect()->route('entries.popular')->with('provider', $data['provider'])->with('register_type', 'oauth');
         }
