@@ -16,13 +16,23 @@
       <hr class="or-line">
 
       {!! Form::open(['route' => 'auth.login.post']) !!}
-        <div class="form-group">
+        <div class="form-group{{ ($errors->has('email') ? ' has-error' : '') }}">
           <label for="email">Email address <span class="required" title="Required">*</span></label>
           {!! Form::email('email', null, ['id' => 'email', 'class' => 'form-control', 'placeholder' => 'Email', 'required']) !!}
+          @if ($errors->has('email'))
+            @foreach($errors->get('email') as $error)
+              <p class="error">{{ $error }}</p>
+            @endforeach
+          @endif
         </div>
-        <div class="form-group">
+        <div class="form-group{{ ($errors->has('password') ? ' has-error' : '') }}">
           <label for="password">Password <span class="required" title="Required">*</span></label>
           {!! Form::password('password', ['id' => 'password', 'class' => 'form-control', 'placeholder' => 'Password', 'required']) !!}
+          @if ($errors->has('password'))
+            @foreach($errors->get('password') as $error)
+              <p class="error">{{ $error }}</p>
+            @endforeach
+          @endif
         </div>
 
         <button type="submit" class="btn btn-default btn-submit">Log in</button>

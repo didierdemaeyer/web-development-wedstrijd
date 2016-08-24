@@ -14,6 +14,10 @@ Route::group(['middelware' => 'web'], function () {
     Route::get('social/redirect/{provider}', ['as' => 'social.redirect', 'uses' => 'SocialAuthController@redirect']);
     Route::get('social/callback/{provider}', ['as' => 'social.callback', 'uses' => 'SocialAuthController@callback']);
 
+    // Settings
+    Route::get('settings', ['as' => 'settings', 'uses' => 'SettingsController@getSettings']);
+    Route::post('settings', ['as' => 'settings.post', 'uses' => 'SettingsController@postSettings']);
+
     // Entries
     Route::get('entries/popular', ['as' => 'entries.popular', 'uses' => 'EntriesController@getPopularEntries']);
     Route::get('entries/latest', ['as' => 'entries.latest', 'uses' => 'EntriesController@getLatestEntries']);

@@ -35,7 +35,7 @@
           @if(\Auth::check())
             <li><a href="#">My entries</a></li>
             <li><a href="#">My votes</a></li>
-            <li><a href="#">Settings</a></li>
+            <li><a href="{{ route('settings') }}">Settings</a></li>
             <li><a href="{{ route('auth.logout') }}">Logout</a></li>
           @else
             <li><a href="{{ route('auth.login') }}">Login</a></li>

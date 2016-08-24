@@ -75,4 +75,19 @@ class User extends Authenticatable
     {
         return $this->belongsToMany('App\Photo', 'votes');
     }
+
+    /**
+     * @return bool
+     */
+    public function isUserInformationComplete()
+    {
+        return ( ! empty($this->fullname)
+            && ! empty($this->firstname)
+            && ! empty($this->lastname)
+            && ! empty($this->email)
+            && ! empty($this->address)
+            && ! empty($this->postcode)
+            && ! empty($this->city)
+            && ! empty($this->country));
+    }
 }

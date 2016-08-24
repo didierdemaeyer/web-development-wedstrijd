@@ -6989,6 +6989,9 @@ header {
 .form-group .required {
   color: #c0392b; }
 
+.form-group .error {
+  color: #c0392b; }
+
 .entries-list {
   margin: 20px 40px; }
   .entries-list::after {
