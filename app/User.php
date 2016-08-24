@@ -71,9 +71,9 @@ class User extends Authenticatable
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function votes()
+    public function likes()
     {
-        return $this->belongsToMany('App\Photo', 'votes');
+        return $this->belongsToMany('App\Photo', 'likes');
     }
 
     /**

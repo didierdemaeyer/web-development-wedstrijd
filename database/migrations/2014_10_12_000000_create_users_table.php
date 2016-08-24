@@ -23,7 +23,6 @@ class CreateUsersTable extends Migration
             $table->string('postcode')->nullable();
             $table->string('city')->nullable();
             $table->string('country')->nullable();
-            $table->string('ip_address');
             $table->integer('role_id')->unsigned();
             $table->rememberToken();
             $table->timestamps();

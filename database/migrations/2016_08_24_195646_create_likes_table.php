@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateVotesTable extends Migration
+class CreateLikesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,9 +12,10 @@ class CreateVotesTable extends Migration
      */
     public function up()
     {
-        Schema::create('votes', function (Blueprint $table) {
+        Schema::create('likes', function (Blueprint $table) {
             $table->integer('user_id')->unsigned();
             $table->integer('photo_id')->unsigned();
+            $table->string('ip_address');
             $table->timestamps();
 
             $table->primary(['user_id', 'photo_id']);
@@ -28,6 +29,6 @@ class CreateVotesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('votes');
+        Schema::drop('likes');
     }
 }

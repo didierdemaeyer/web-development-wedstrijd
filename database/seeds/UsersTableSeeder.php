@@ -30,8 +30,7 @@ class UsersTableSeeder extends Seeder
                 'address' => 'Frans Cretenlaan 55',
                 'postcode' => '2627',
                 'city' => 'Schelle',
-                'country' => 'België',
-                'ip_address' => '0.0.0.0',
+                'country' => 'Belgium',
                 'role_id' => $admin_role,
             ],
         ];
