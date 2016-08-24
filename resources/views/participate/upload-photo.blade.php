@@ -1,22 +1,17 @@
 @extends('layouts.master')
 
-@section('title', 'Participate')
+@section('title', 'Upload your photo')
 
 @section('content')
-  <div id="participate-container">
+  <div id="participate-container" class="container">
 
     <div class="form-container">
-      <h1 class="big">Stap 1: Registreer</h1>
-      <h1 class="big">Stap 2: Upload je foto</h1>
+      <h1 class="big">Upload your photo</h1>
 
-      {!! Form::open(['route' => 'auth.login.post']) !!}
+      {!! Form::open(['route' => 'participate.post', 'files' => true]) !!}
       <div class="form-group">
-        <label for="email">Email address</label>
-        {!! Form::email('email', null, ['id' => 'email', 'class' => 'form-control', 'placeholder' => 'Email']) !!}
-      </div>
-      <div class="form-group">
-        <label for="password">Password</label>
-        {!! Form::password('password', ['id' => 'password', 'class' => 'form-control', 'placeholder' => 'Password']) !!}
+        <label for="photo">Photo (Max file size: 5MB, Accepted file types: JPEG, PNG, GIF)</label>
+        {!! Form::file('photo', ['id' => 'photo', 'required']) !!}
       </div>
 
       <button type="submit" class="btn btn-default">Submit</button>

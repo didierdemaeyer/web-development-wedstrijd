@@ -19,21 +19,12 @@
     <div class="entries-list">
       <div class="grid-sizer"></div>
 
-      <div class="grid-item entry">
-        <img src="" alt="">
-        <div class="btn-like">Like</div>
-      </div>
-      <div class="grid-item entry"><img src="" alt=""></div>
-      <div class="grid-item entry"><img src="" alt=""></div>
-      <div class="grid-item entry"><img src="" alt=""></div>
-      <div class="grid-item entry"><img src="" alt=""></div>
-      <div class="grid-item entry"><img src="" alt=""></div>
-      <div class="grid-item entry"><img src="" alt=""></div>
-      <div class="grid-item entry"><img src="" alt=""></div>
-      <div class="grid-item entry"><img src="" alt=""></div>
-      <div class="grid-item entry"><img src="" alt=""></div>
-
-      <div class="grid-item entry">View all entries</div>
+      @foreach($photos as $photo)
+        <div class="grid-item entry" style="background-image: url({{ $photo->url }})">
+          <a href="{{ route('entries.show', $photo->id) }}"></a>
+        </div>
+      @endforeach
+      {{--<div class="grid-item all-entries"><a href="{{ route('entries.popular') }}">View all entries</a></div>--}}
     </div>
 
     <h1>Previous winners</h1>

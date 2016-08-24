@@ -22,10 +22,16 @@ Route::group(['middelware' => 'web'], function () {
     Route::get('entries/popular', ['as' => 'entries.popular', 'uses' => 'EntriesController@getPopularEntries']);
     Route::get('entries/latest', ['as' => 'entries.latest', 'uses' => 'EntriesController@getLatestEntries']);
     Route::get('entries/oldest', ['as' => 'entries.oldest', 'uses' => 'EntriesController@getOldestEntries']);
+    Route::get('entries/{id}', ['as' => 'entries.show', 'uses' => 'EntriesController@show']);
 
     // Participate
     Route::get('participate', ['as' => 'participate', 'uses' => 'ParticipationController@getUploadPhoto']);
-    Route::post('participate', ['as' => 'participate.store', 'uses' => 'ParticipationController@postUploadPhoto']);
+    Route::post('participate', ['as' => 'participate.post', 'uses' => 'ParticipationController@postUploadPhoto']);
     Route::get('participate/complete-information', ['as' => 'participate.complete-info', 'uses' => 'ParticipationController@getCompleteInfo']);
     Route::post('participate/complete-information', ['as' => 'participate.complete-info.post', 'uses' => 'ParticipationController@postCompleteInfo']);
+    Route::get('participate/thank-you', ['as' => 'participate.thank-you', 'uses' => 'ParticipationController@thankYou']);
+
+    // (Profile)
+    Route::get('my-entries', ['as' => 'profile.entries', 'uses' => 'ProfileController@getMyEntries']);
+    Route::get('my-likes', ['as' => 'profile.likes', 'uses' => 'ProfileController@getMyLikes']);
 });

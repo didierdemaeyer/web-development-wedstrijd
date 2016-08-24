@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Photo;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 
@@ -14,7 +15,9 @@ class EntriesController extends Controller
      */
     public function getPopularEntries()
     {
-        return view('entries.index');
+        $photos = Photo::all();
+
+        return view('entries.index', compact('photos'));
     }
 
     /**
@@ -24,7 +27,9 @@ class EntriesController extends Controller
      */
     public function getLatestEntries()
     {
-        return view('entries.index');
+        $photos = Photo::orderBy('created_at', 'DESC')->get();
+
+        return view('entries.index', compact('photos'));
     }
 
     /**
@@ -34,6 +39,15 @@ class EntriesController extends Controller
      */
     public function getOldestEntries()
     {
-        return view('entries.index');
+        $photos = Photo::orderBy('created_at', 'ASC')->get();
+
+        return view('entries.index', compact('photos'));
+    }
+
+    public function show($id)
+    {
+        $photo = Photo::findOrFail($id);
+
+        dd($photo);
     }
 }

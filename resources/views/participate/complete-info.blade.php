@@ -8,7 +8,7 @@
     <div class="form-container">
       <h1 class="big">Complete your information</h1>
 
-      <p>Please fill in all of these fields to start uploading your photos.</p>
+      <p>Please fill in your information to start uploading your photos.</p>
 
       {!! Form::model(\Auth::user(), ['route' => 'participate.complete-info.post']) !!}
       <div class="form-group{{ ($errors->has('firstname') ? ' has-error' : '') }}">

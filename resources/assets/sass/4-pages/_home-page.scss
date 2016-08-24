@@ -5,4 +5,18 @@
     font-weight: 300;
     text-align: center;
   }
+
+
+  .grid-item.all-entries a {
+    position: absolute;
+    display: block;
+    top: 40%;
+    right: auto;
+    bottom: auto;
+    left: auto;
+
+    font-size: 20px;
+    text-align: center;
+    line-height: 100%;
+  }
 }
