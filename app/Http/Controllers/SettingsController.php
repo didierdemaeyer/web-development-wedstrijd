@@ -33,9 +33,9 @@ class SettingsController extends Controller
         try {
             $user = \Auth::user();
             $userData = $request->only(
-                'email',
                 'firstname',
                 'lastname',
+                'email',
                 'address',
                 'city',
                 'postcode',
@@ -46,7 +46,7 @@ class SettingsController extends Controller
         } catch (\Exception $e) {
             showErrors(['Something went wrong saving your settings! Please try again.']);
 
-            return back();
+            return back()->withInput();
         }
 
         showSuccess(['Your settings have been updated.']);
