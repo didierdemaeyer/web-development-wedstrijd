@@ -34,10 +34,26 @@
       </div>
     @endif
 
-    <h1>Previous winners</h1>
+    @if(count($previousPeriods))
+      <h1>Previous winners</h1>
 
-    <div class="previous-winners">
+      <div class="entries-list previous-winners">
+        <div class="grid-sizer"></div>
 
-    </div>
+        @foreach($previousPeriods as $previousPeriod)
+          @if(count($previousPeriod->winning_photo))
+            <div class="grid-item entry" style="background-image: url({{ $previousPeriod->winning_photo->url }})">
+              {{--<a href="{{ route('entries.show', $photo->id) }}"></a>--}}
+              <div class="info">
+                <h5>Period {{ $previousPeriod->period_number }}: {{ $previousPeriod->startdate->format('d/m/y') }} - {{ $previousPeriod->enddate->format('d/m/y') }}</h5>
+                <span class="user">Photo by {{ $previousPeriod->winning_photo->user->firstname }}</span>
+                <span class="likes">{{ count($photo->likes) }} {{ count($photo->likes) == 1 ? 'Like' : 'Likes' }}</span>
+              </div>
+            </div>
+          @endif
+        @endforeach
+      </div>
+    @endif
+    
   </div>
 @stop

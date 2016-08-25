@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\ContestPeriod;
 use App\Photo;
 use Illuminate\Http\Request;
 use App\Http\Requests;
@@ -13,8 +14,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $photos = Photo::orderBy('created_at', 'DESC')->take(8)->get();
+        $photos = Photo::getLatestEntries(8);
+        $previousPeriods = ContestPeriod::getPreviousPeriods();
 
-        return view('home', compact('photos'));
+        return view('home', compact('photos', 'previousPeriods'));
     }
 }

@@ -14,8 +14,10 @@ class CreateContestPeriodsTable extends Migration
     {
         Schema::create('contest_periods', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('period_number');
             $table->dateTime('startdate');
             $table->dateTime('enddate');
+            $table->integer('photo_id')->unsigned()->nullable();
             $table->timestamps();
         });
     }

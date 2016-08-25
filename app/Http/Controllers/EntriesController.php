@@ -16,9 +16,7 @@ class EntriesController extends Controller
      */
     public function getPopularEntries()
     {
-        $photos = Photo::with('likes')->get()->sortBy(function($photo) {
-            return $photo->likes->count();
-        }, null, true);
+        $photos = Photo::getPhotosSortedByMostPopular();
 
         return view('entries.index', compact('photos'));
     }
@@ -30,7 +28,7 @@ class EntriesController extends Controller
      */
     public function getLatestEntries()
     {
-        $photos = Photo::orderBy('created_at', 'DESC')->get();
+        $photos = Photo::getPhotosSortedByLatest();
 
         return view('entries.index', compact('photos'));
     }
@@ -42,7 +40,7 @@ class EntriesController extends Controller
      */
     public function getOldestEntries()
     {
-        $photos = Photo::orderBy('created_at', 'ASC')->get();
+        $photos = Photo::getPhotosSortedByOldest();
 
         return view('entries.index', compact('photos'));
     }
