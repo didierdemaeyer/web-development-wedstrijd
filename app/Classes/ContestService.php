@@ -19,6 +19,8 @@ class ContestService
         $period->winning_photo()->associate($winning_photo);
         $period->save();
 
+        $this->sendEmailToAdministrator($period, $winning_photo);
+
         return true;
     }
 
@@ -65,5 +67,19 @@ class ContestService
         }
 
         return $winning_photo;
+    }
+
+    /**
+     * @return bool
+     */
+    private function sendEmailToAdministrator($period, $winning_photo)
+    {
+        \Mail::send('emails.winner-selected', ['winning_photo' => $winning_photo, 'period' => $period], function ($m) use ($period) {
+            $m->from('noreply@wedstrijd-tnf.dev', 'TNF Wedstrijd');
+
+            $m->to('didierdemaeyer@gmail.com', 'Didier')->subject('Winner selected for period ' . $period->period_number);
+        });
+
+        return true;
     }
 }
