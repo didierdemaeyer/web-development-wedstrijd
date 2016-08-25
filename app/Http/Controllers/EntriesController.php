@@ -16,7 +16,9 @@ class EntriesController extends Controller
      */
     public function getPopularEntries()
     {
-        $photos = Photo::all();
+        $photos = Photo::with('likes')->get()->sortBy(function($photo) {
+            return $photo->likes->count();
+        }, null, true);
 
         return view('entries.index', compact('photos'));
     }

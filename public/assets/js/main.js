@@ -49,9 +49,9 @@ var TNF = (function () {
           break;
       }
     })
-      .fail(function(response) {
-        console.log(response);
-      });
+    .fail(function(response) {
+      console.log(response);
+    });
   }
 
   /* Show a notification (Session message) */
@@ -102,13 +102,11 @@ var TNF = (function () {
   /* Get the clients IP address */
   function getClientIpAddress() {
     $.getJSON("https://jsonip.com/?callback=?", function (data) {
-      console.log(data);
       clientIpAddress = data.ip;
     });
   }
   
   function toggleLikePhoto(el) {
-    console.log(el);
     var $likeBtn = $(el);
     var data = {
       'user-id': userId,
@@ -127,7 +125,6 @@ var TNF = (function () {
 
   function disableLikeButton(el) {
     var $likeBtn = $(el);
-    $likeBtn.addClass('disabled');
     $likeBtn.off('click');
   }
   

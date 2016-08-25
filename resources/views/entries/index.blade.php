@@ -22,7 +22,8 @@
     </header>
 
     <div class="sort-entries">
-      <a {{ (Request::is('entries/popular') ? 'class=active' : '') }} href="{{ route('entries.popular') }}">Popular</a>
+      Sort by:
+      <a {{ (Request::is('entries/popular') ? 'class=active' : '') }} href="{{ route('entries.popular') }}">Most Popular</a>
       <a {{ (Request::is('entries/latest') ? 'class=active' : '') }} href="{{ route('entries.latest') }}">Latest</a>
       <a {{ (Request::is('entries/oldest') ? 'class=active' : '') }} href="{{ route('entries.oldest') }}">Oldest</a>
     </div>
