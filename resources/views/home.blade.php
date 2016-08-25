@@ -14,7 +14,24 @@
 
     </header>
 
-    <h1>How to participate</h1>
+    <h1>How to win</h1>
+
+    <div id="how-to-win" class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <h2>Step 1: Create an account</h2>
+          <p><a href="{{ route('auth.register') }}">Create</a> or <a href="{{ route('auth.login') }}">log into</a> your account and fill in the necessary information. When you have an account you can also like photos of other people.</p>
+        </div>
+        <div class="col-md-4">
+          <h2>Step 2: Upload your photo</h2>
+          <p><a href="{{ route('participate') }}">Upload</a> your adventureous or beautiful landscape photos and have a chance at winning The North Face&reg; equipment.</p>
+        </div>
+        <div class="col-md-4">
+          <h2>Step 3: Get likes</h2>
+          <p>Get as much likes as you can on your photos! There are 4 periods and at the end of each period the photo with the most likes wins!.</p>
+        </div>
+      </div>
+    </div>
 
     @if(count($photos))
       <h1>Latest entries</h1>

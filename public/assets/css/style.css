@@ -7061,8 +7061,17 @@ hr {
     background-color: #ffffff; }
 
 #home-container h1 {
+  margin-top: 70px;
   font-size: 40px;
   font-weight: 300;
+  text-align: center; }
+
+#home-container #how-to-win h2 {
+  font-size: 22px;
+  font-weight: 300;
+  text-align: center; }
+
+#home-container #how-to-win p {
   text-align: center; }
 
 #home-container .grid-item.all-entries a {
