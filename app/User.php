@@ -20,8 +20,8 @@ class User extends Authenticatable
         'address',
         'postcode',
         'city',
-        'country',
         'ip_address',
+        'country_id',
         'role_id',
     ];
 
@@ -42,6 +42,14 @@ class User extends Authenticatable
     public function setPasswordAttribute($pass)
     {
         $this->attributes['password'] = bcrypt($pass);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function country()
+    {
+        return $this->belongsTo('App\Country');
     }
 
     /**

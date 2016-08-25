@@ -21,6 +21,8 @@ class UsersTableSeeder extends Seeder
             ->first()
             ->id;
 
+        $country_belgium = \App\Country::where('name', 'Belgium')->first();
+
         $users = [
             [
                 'firstname' => 'Admin',
@@ -30,7 +32,7 @@ class UsersTableSeeder extends Seeder
                 'address' => 'Frans Cretenlaan 55',
                 'postcode' => '2627',
                 'city' => 'Schelle',
-                'country' => 'Belgium',
+                'country_id' => $country_belgium->id,
                 'role_id' => $admin_role,
             ],
         ];

@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Photo extends Model
 {
+    /**
+     * @var array
+     */
     protected $fillable = [
         'url',
         'ip_address',

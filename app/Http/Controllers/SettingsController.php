@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Country;
 use App\Http\Requests\UpdateSettingsFormRequest;
 use App\Http\Requests;
 
@@ -13,6 +14,7 @@ class SettingsController extends Controller
     public function getSettings()
     {
         $user = \Auth::user();
+        $countries = Country::orderBy('name')->get();
 
         if (count($user->photos)) {
             $required_info = 'full';
@@ -21,7 +23,7 @@ class SettingsController extends Controller
         }
         session()->put('required_info', $required_info);
 
-        return view('profile.settings');
+        return view('profile.settings', compact('countries'));
     }
 
     /**
@@ -38,10 +40,10 @@ class SettingsController extends Controller
                 'email',
                 'address',
                 'city',
-                'postcode',
-                'country'
+                'postcode'
             );
             $userData['fullname'] = $request->get('firstname') . ' ' . $request->get('lastname');
+            $userData['country_id'] = (int) $request->get('country');
             $user->update($userData);
         } catch (\Exception $e) {
             showErrors(['Something went wrong saving your settings! Please try again.']);

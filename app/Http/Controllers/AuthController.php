@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Country;
 use App\Http\Requests\LoginFormRequest;
 use App\Http\Requests\RegisterFormRequest;
 use App\Role;
@@ -37,7 +38,9 @@ class AuthController extends Controller
      */
     public function getRegister()
     {
-        return view('auth.register');
+        $countries = Country::orderBy('name')->get();
+
+        return view('auth.register', compact('countries'));
     }
 
     /**
@@ -54,10 +57,10 @@ class AuthController extends Controller
                 'lastname',
                 'address',
                 'city',
-                'postcode',
-                'country'
+                'postcode'
             );
             $userData['fullname'] = $request->get('firstname') . ' ' . $request->get('lastname');
+            $userData['country_id'] = (int) $request->get('country');
 
             $user = new User($userData);
             $role = Role::where('name', 'user')->first();

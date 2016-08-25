@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Country;
 use App\Http\Requests\UpdateSettingsFormRequest;
 use App\Http\Requests\UploadPhotoFormRequest;
 use Illuminate\Http\Request;
@@ -62,10 +63,11 @@ class ParticipationController extends Controller
      */
     public function getCompleteInfo()
     {
+        $countries = Country::orderBy('name')->get();
         $required_info = 'full';
         session()->put('required_info', $required_info);
 
-        return view('participate.complete-info');
+        return view('participate.complete-info', compact('countries'));
     }
 
     /**
@@ -82,10 +84,10 @@ class ParticipationController extends Controller
                 'email',
                 'address',
                 'city',
-                'postcode',
-                'country'
+                'postcode'
             );
             $userData['fullname'] = $request->get('firstname') . ' ' . $request->get('lastname');
+            $userData['country_id'] = (int) $request->get('country');
             $user->update($userData);
         } catch (\Exception $e) {
             showErrors(['Something went wrong! Please try again.']);

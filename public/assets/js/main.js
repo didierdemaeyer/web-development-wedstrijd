@@ -61,18 +61,54 @@ var TNF = (function () {
       + '</div></div>';
 
     $('#notifications').prepend(hMessage);
-    addSessionMessagesClickListeners();
+    addNotificationClickListener();
   }
 
   /* Add onClick listeners to all session messages */
   function addSessionMessagesClickListeners() {
-    $('.notification').off('click').click(function () {
+    var notifications = $('.notification');
+
+    notifications.off('click').click(function () {
       var notification = $(this);
       notification.fadeOut(300);
       setTimeout(function () {
         notification.remove();
       }, 300);
     });
+
+    setTimeout(function () {
+      notifications.fadeOut(300);
+      setTimeout(function () {
+        notifications.remove();
+      }, 300);
+    }, 3000);
+
+    if ($('#notifications').children().length > 3) {
+      var notification = $('#notifications .notification:last-child');
+      notification.fadeOut(300);
+      setTimeout(function () {
+        notification.remove();
+      }, 300);
+    }
+  }
+
+  /* Add onClick listener to latest added notification */
+  function addNotificationClickListener() {
+    var notification = $('#notifications .notification:first-child');
+    notification.off('click').click(function () {
+      var notification = $(this);
+      notification.fadeOut(300);
+      setTimeout(function () {
+        notification.remove();
+      }, 300);
+    });
+
+    setTimeout(function () {
+      notification.fadeOut(300);
+      setTimeout(function () {
+        notification.remove();
+      }, 300);
+    }, 3000);
 
     if ($('#notifications').children().length > 3) {
       var notification = $('#notifications .notification:last-child');
@@ -86,6 +122,10 @@ var TNF = (function () {
   /* Add onClick listeners to all like buttons on the photos */
   function addLikePhotoClickListeners() {
     $('.entry .like').off('click').on('click', function () {
+      if (!userId) {
+        showNotification('error', 'You have to be logged in to like a photo.');
+        return false;
+      }
       toggleLikePhoto(this);
       disableLikeButton(this);
     });
@@ -94,6 +134,10 @@ var TNF = (function () {
   /* Add onClick listener to one like button */
   function addLikePhotoClickListener(button) {
     button.off('click').on('click', function () {
+      if (!userId) {
+        showNotification('error', 'You have to be logged in to like a photo.');
+        return false;
+      }
       toggleLikePhoto(this);
       disableLikeButton(this);
     });
@@ -105,7 +149,8 @@ var TNF = (function () {
       clientIpAddress = data.ip;
     });
   }
-  
+
+  /* Handle like or unlike photo */
   function toggleLikePhoto(el) {
     var $likeBtn = $(el);
     var data = {
@@ -123,11 +168,13 @@ var TNF = (function () {
     }
   }
 
+  /* Disable like photo button */
   function disableLikeButton(el) {
     var $likeBtn = $(el);
     $likeBtn.off('click');
   }
-  
+
+  /* Update stuff after photo is liked */
   function handlePhotoLiked(response, button) {
     addLikePhotoClickListener(button);
     var $likes = button.parent().find('.likes');
@@ -140,7 +187,8 @@ var TNF = (function () {
       $likes.text(likes + ' Likes');
     }
   }
-  
+
+  /* Update stuff after photo is unliked */
   function handlePhotoUnliked(response, button) {
     addLikePhotoClickListener(button);
     var $likes = button.parent().find('.likes');
@@ -156,9 +204,5 @@ var TNF = (function () {
 
 
   init();
-
-  return {
-    getClientIpAddress: getClientIpAddress
-  }
 })();
 //# sourceMappingURL=main.js.map
