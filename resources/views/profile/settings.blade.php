@@ -3,7 +3,7 @@
 @section('title', 'Settings')
 
 @section('content')
-  <div id="settings-container" class="container">
+  <div id="settings-container">
 
     <div class="form-container">
       <h1 class="big">Settings</h1>

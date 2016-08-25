@@ -13,23 +13,4 @@
   h1 {
     color: $gray;
   }
-
-  label {
-    font-weight: 300;
-  }
-
-  .btn-submit {
-    padding: 10px 25px;
-    background-color: $red;
-    color: $white;
-    font-weight: 700;
-    text-transform: uppercase;
-    border: none;
-
-    transition: all 0.3s ease;
-    
-    &:hover {
-      background-color: $black;
-    }
-  }
 }

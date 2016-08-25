@@ -1,0 +1,22 @@
+.btn {
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border: none;
+  transition: all 0.3s ease;
+  border-radius: 0;
+}
+
+.btn-default {
+  padding: 10px 25px;
+  background-color: $red;
+  color: $white;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &:active:focus {
+    background-color: $black;
+    color: $white;
+  }
+}

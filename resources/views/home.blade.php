@@ -7,7 +7,7 @@
       <div class="overlay">
         <div class="call-to-action">
           <p>Share a beautiful landscape and win The North Face&reg; equipment.</p>
-          <button class="btn btn-cta"><a href="{{ route('participate') }}">Upload photo</a></button>
+          <a class="btn btn-cta btn-default" href="{{ route('participate') }}">Upload photo</a>
           <div class="period-end"></div>
         </div>
       </div>

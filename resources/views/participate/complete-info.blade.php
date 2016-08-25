@@ -3,7 +3,7 @@
 @section('title', 'Participate - Complete information')
 
 @section('content')
-  <div id="participate-container" class="container">
+  <div id="participate-container">
 
     <div class="form-container">
       <h1 class="big">Complete your information</h1>

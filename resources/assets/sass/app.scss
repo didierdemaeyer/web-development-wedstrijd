@@ -14,12 +14,15 @@
 @import "3-modules/footer";
 @import "3-modules/notifications";
 @import "3-modules/main-nav";
-@import "3-modules/auth";
-@import "3-modules/forms";
-@import "3-modules/entries-list";
+@import "3-modules/buttons";
 @import "3-modules/lines";
 @import "3-modules/pagination";
+@import "3-modules/forms";
+@import "3-modules/entries-list";
+@import "3-modules/auth";
 
 @import "4-pages/home-page";
 @import "4-pages/entries-page";
 @import "4-pages/profile-page";
+@import "4-pages/settings-page";
+@import "4-pages/participate-page";

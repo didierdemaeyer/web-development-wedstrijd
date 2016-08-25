@@ -3,7 +3,7 @@
 @section('title', 'Upload your photo')
 
 @section('content')
-  <div id="participate-container" class="container">
+  <div id="participate-container">
 
     <div class="form-container">
       <h1 class="big">Upload your photo</h1>
@@ -14,7 +14,7 @@
         {!! Form::file('photo', ['id' => 'photo', 'required']) !!}
       </div>
 
-      <button type="submit" class="btn btn-default">Submit</button>
+      <button type="submit" class="btn btn-default btn-submit">Submit</button>
       {!! Form::close() !!}
     </div>
 
