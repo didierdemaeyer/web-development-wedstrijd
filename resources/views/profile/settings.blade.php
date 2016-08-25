@@ -78,9 +78,27 @@
       <div class="form-group{{ ($errors->has('country') ? ' has-error' : '') }}">
         <label for="country">Country {!! session('required_info') == 'full' ? '<span class="required" title="Required">*</span>' : ''  !!}</label>
         @if(session('required_info') == 'full')
-          {!! Form::text('country', null, ['id' => 'country', 'class' => 'form-control', 'placeholder' => 'Country', 'required']) !!}
+          <select name="country" id="country" class="form-control" required>
+            <option value="" disabled selected>Select your country</option>
+            @foreach($countries as $country)
+              @if (\Auth::user()->country_id == $country->id)
+                <option value="{{ $country->id }}" selected>{{ $country->name }}</option>
+              @else
+                <option value="{{ $country->id }}">{{ $country->name }}</option>
+              @endif
+            @endforeach
+          </select>
         @else
-          {!! Form::text('country', null, ['id' => 'country', 'class' => 'form-control', 'placeholder' => 'Country']) !!}
+          <select name="country" id="country" class="form-control">
+            <option value="" disabled selected>Select your country</option>
+            @foreach($countries as $country)
+              @if (\Auth::user()->country_id == $country->id)
+                <option value="{{ $country->id }}" selected>{{ $country->name }}</option>
+              @else
+                <option value="{{ $country->id }}">{{ $country->name }}</option>
+              @endif
+            @endforeach
+          </select>
         @endif
         @if ($errors->has('country'))
           @foreach($errors->get('country') as $error)

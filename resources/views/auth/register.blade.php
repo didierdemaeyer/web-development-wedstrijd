@@ -75,7 +75,12 @@
         </div>
         <div class="form-group">
           <label for="country">Country</label>
-          {!! Form::text('country', null, ['id' => 'country', 'class' => 'form-control', 'placeholder' => 'Country']) !!}
+          <select name="country" id="country" class="form-control">
+            <option value="" disabled selected>Select your country</option>
+            @foreach($countries as $country)
+              <option value="{{ $country->id }}">{{ $country->name }}</option>
+            @endforeach
+          </select>
         </div>
 
         <button type="submit" class="btn btn-default btn-submit">Register</button>
