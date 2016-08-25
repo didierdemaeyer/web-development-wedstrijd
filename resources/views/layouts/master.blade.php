@@ -40,8 +40,8 @@
 
         <ul class="nav navbar-nav navbar-right">
           @if(\Auth::check())
-            <li><a href="{{ route('profile.entries') }}">My entries</a></li>
-            <li><a href="{{ route('profile.likes') }}">My likes</a></li>
+            <li><a href="{{ route('profile.entries', \App\ContestPeriod::getCurrentPeriod()->id) }}">My entries</a></li>
+            <li><a href="{{ route('profile.likes', \App\ContestPeriod::getCurrentPeriod()->id) }}">My likes</a></li>
             <li><a href="{{ route('settings') }}">Settings</a></li>
             <li><a href="{{ route('auth.logout') }}">Logout</a></li>
           @else

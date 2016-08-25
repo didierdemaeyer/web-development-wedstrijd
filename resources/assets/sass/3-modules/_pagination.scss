@@ -1,0 +1,25 @@
+.pagination {
+
+
+  li a {
+    color: $gray;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: $red;
+    }
+  }
+
+  .active span {
+    background-color: $red;
+    border-color: $red;
+
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: $red;
+      border-color: $red;
+    }
+  }
+}

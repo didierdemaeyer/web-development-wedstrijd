@@ -7060,6 +7060,18 @@ hr {
     color: #2A2A2A;
     background-color: #ffffff; }
 
+.pagination li a {
+  color: #2A2A2A; }
+  .pagination li a:hover, .pagination li a:focus, .pagination li a:active {
+    color: #E72B1E; }
+
+.pagination .active span {
+  background-color: #E72B1E;
+  border-color: #E72B1E; }
+  .pagination .active span:hover, .pagination .active span:focus, .pagination .active span:active {
+    background-color: #E72B1E;
+    border-color: #E72B1E; }
+
 #home-container h1 {
   margin-top: 70px;
   font-size: 40px;
@@ -7114,6 +7126,21 @@ hr {
 
 #profile-container {
   padding: 20px 40px; }
+  #profile-container .select-period {
+    display: block; }
+    #profile-container .select-period a {
+      color: #2A2A2A;
+      padding: 5px;
+      margin: 0 10px;
+      font-size: 20px; }
+      #profile-container .select-period a:hover {
+        text-decoration: none;
+        color: #E72B1E;
+        border-bottom: 3px solid #E72B1E; }
+      #profile-container .select-period a.active {
+        color: #E72B1E; }
+      #profile-container .select-period a span {
+        font-size: 12px; }
   #profile-container .entries-list {
     margin: 20px 0; }
 

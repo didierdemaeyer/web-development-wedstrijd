@@ -98,4 +98,29 @@ class User extends Authenticatable
             && ! empty($this->city)
             && ! empty($this->country));
     }
+
+    /**
+     * @param $period
+     * @param $perPage
+     * @return mixed
+     */
+    public function getLikedPhotosForPeriod($period, $perPage)
+    {
+        $period = ContestPeriod::where('period_number', $period)->first();
+
+        return $this->likes()
+            ->where('photos.created_at', '>', $period->startdate)
+            ->where('photos.created_at', '<', $period->enddate)
+            ->paginate($perPage);
+    }
+
+    public function getMyEntriesForPeriod($period, $perPage)
+    {
+        $period = ContestPeriod::where('period_number', $period)->first();
+
+        return $this->photos()
+            ->where('photos.created_at', '>', $period->startdate)
+            ->where('photos.created_at', '<', $period->enddate)
+            ->paginate($perPage);
+    }
 }

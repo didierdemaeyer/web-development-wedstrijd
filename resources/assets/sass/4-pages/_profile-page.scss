@@ -1,6 +1,31 @@
 #profile-container {
   padding: 20px 40px;
 
+  .select-period {
+    display: block;
+
+    a {
+      color: $gray;
+      padding: 5px;
+      margin: 0 10px;
+      font-size: 20px;
+
+      &:hover {
+        text-decoration: none;
+        color: $red;
+        border-bottom: 3px solid $red;
+      }
+
+      &.active {
+        color: $red;
+      }
+
+      span {
+        font-size: 12px;
+      }
+    }
+  }
+
   .entries-list {
     margin: 20px 0;
   }

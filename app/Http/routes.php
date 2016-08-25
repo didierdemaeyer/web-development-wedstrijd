@@ -39,8 +39,8 @@ Route::group(['middelware' => 'web'], function () {
      */
     Route::group(['middleware' => 'auth'], function () {
         // (Profile)
-        Route::get('my-entries', ['as' => 'profile.entries', 'uses' => 'ProfileController@getMyEntries']);
-        Route::get('my-likes', ['as' => 'profile.likes', 'uses' => 'ProfileController@getMyLikes']);
+        Route::get('my-entries/{period}', ['as' => 'profile.entries', 'uses' => 'ProfileController@getMyEntries']);
+        Route::get('my-likes/{period}', ['as' => 'profile.likes', 'uses' => 'ProfileController@getMyLikes']);
 
         // Settings
         Route::get('settings', ['as' => 'settings', 'uses' => 'SettingsController@getSettings']);

@@ -60,4 +60,14 @@ class ContestPeriod extends Model
             ->orderBy('enddate', 'DESC')
             ->first();
     }
+
+    /**
+     * @return mixed
+     */
+    public static function getCurrentAndPreviousPeriods()
+    {
+        return ContestPeriod::where('startdate', '<', Carbon::now())
+            ->orderBy('startdate', 'ASC')
+            ->get();
+    }
 }
