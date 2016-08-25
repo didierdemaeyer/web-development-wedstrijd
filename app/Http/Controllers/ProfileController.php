@@ -18,8 +18,8 @@ class ProfileController extends Controller
     public function getMyLikes()
     {
         $user = \Auth::user();
-        $likes = $user->likes;
+        $photos = $user->likes;
 
-        return view('profile.likes', compact('likes'));
+        return view('profile.likes', compact('photos'));
     }
 }

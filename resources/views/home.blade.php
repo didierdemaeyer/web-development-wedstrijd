@@ -14,18 +14,25 @@
 
     </header>
 
-    <h1>Latest entries</h1>
+    <h1>How to participate</h1>
 
-    <div class="entries-list">
-      <div class="grid-sizer"></div>
+    @if(count($photos))
+      <h1>Latest entries</h1>
 
-      @foreach($photos as $photo)
-        <div class="grid-item entry" style="background-image: url({{ $photo->url }})">
-          <a href="{{ route('entries.show', $photo->id) }}"></a>
-        </div>
-      @endforeach
-      {{--<div class="grid-item all-entries"><a href="{{ route('entries.popular') }}">View all entries</a></div>--}}
-    </div>
+      <div class="entries-list">
+        <div class="grid-sizer"></div>
+
+        @foreach($photos as $photo)
+          <div class="grid-item entry" style="background-image: url({{ $photo->url }})">
+            <a href="{{ route('entries.show', $photo->id) }}"></a>
+            <div class="info">
+              <span class="like{{ $photo->isLikedByUser(\Auth::user()) ? ' liked' : '' }}" data-photo-id="{{ $photo->id }}"></span>
+              <span class="likes">{{ count($photo->likes) }} {{ count($photo->likes) == 1 ? 'Like' : 'Likes' }}</span>
+            </div>
+          </div>
+        @endforeach
+      </div>
+    @endif
 
     <h1>Previous winners</h1>
 

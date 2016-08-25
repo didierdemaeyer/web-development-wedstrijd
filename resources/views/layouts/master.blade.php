@@ -2,6 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+  <meta name="like-photo-url" content="{{ route('entries.like') }}">
+  <meta name="unlike-photo-url" content="{{ route('entries.unlike') }}">
+  @if (\Auth::check())
+    <meta name="user-id" content="{{ \Auth::user()->id }}">
+  @endif
+
   <title>@yield('title', 'Photo Contest - The North Face')</title>
 
   @include('includes.styles')

@@ -19,8 +19,20 @@ class Photo extends Model
         return $this->belongsTo('App\User');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function likes()
     {
         return $this->belongsToMany('App\User', 'likes');
+    }
+
+    /**
+     * @param User $user
+     * @return bool
+     */
+    public function isLikedbyUser(User $user)
+    {
+        return count($this->likes->where('id', $user->id)->first());
     }
 }

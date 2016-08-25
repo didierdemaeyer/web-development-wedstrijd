@@ -41,7 +41,7 @@ class ParticipationController extends Controller
 
             $file->move(public_path($destinationPath), $filename);
             
-            $user->photos()->create([
+            $photo = $user->photos()->create([
                 'url' => $destinationPath . '/' . $filename,
                 'ip_address' => getClientIpAddress(),
             ]);
@@ -54,7 +54,7 @@ class ParticipationController extends Controller
 
         showSuccess(['Photo uploaded successfully.']);
 
-        return redirect()->route('participate.thank-you');
+        return redirect()->route('participate.thank-you')->with('photo_id', $photo->id);
     }
 
     /**

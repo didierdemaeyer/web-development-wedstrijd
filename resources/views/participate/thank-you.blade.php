@@ -7,7 +7,7 @@
 
       <h1 class="big">Thank you for participating</h1>
 
-      <p>View your photo: <a href="#">Link</a></p>
+      <p>View your photo: <a href="{{ route('entries.show', session('photo_id')) }}">Link</a></p>
 
   </div>
 @stop

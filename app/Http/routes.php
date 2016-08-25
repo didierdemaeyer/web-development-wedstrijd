@@ -23,6 +23,8 @@ Route::group(['middelware' => 'web'], function () {
     Route::get('entries/latest', ['as' => 'entries.latest', 'uses' => 'EntriesController@getLatestEntries']);
     Route::get('entries/oldest', ['as' => 'entries.oldest', 'uses' => 'EntriesController@getOldestEntries']);
     Route::get('entries/{id}', ['as' => 'entries.show', 'uses' => 'EntriesController@show']);
+    Route::post('entries/like', ['as' => 'entries.like', 'uses' => 'EntriesController@likePhoto']);
+    Route::post('entries/unlike', ['as' => 'entries.unlike', 'uses' => 'EntriesController@unlikePhoto']);
 
     // Participate
     Route::get('participate', ['as' => 'participate', 'uses' => 'ParticipationController@getUploadPhoto']);
