@@ -47,13 +47,13 @@
               <div class="info">
                 <h5>Period {{ $previousPeriod->period_number }}: {{ $previousPeriod->startdate->format('d/m/y') }} - {{ $previousPeriod->enddate->format('d/m/y') }}</h5>
                 <span class="user">Photo by {{ $previousPeriod->winning_photo->user->firstname }}</span>
-                <span class="likes">{{ count($photo->likes) }} {{ count($photo->likes) == 1 ? 'Like' : 'Likes' }}</span>
+                <span class="likes">{{ count($previousPeriod->winning_photo->likes) }} {{ count($previousPeriod->winning_photo->likes) == 1 ? 'Like' : 'Likes' }}</span>
               </div>
             </div>
           @endif
         @endforeach
       </div>
     @endif
-    
+
   </div>
 @stop
