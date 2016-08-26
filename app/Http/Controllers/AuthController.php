@@ -75,9 +75,9 @@ class AuthController extends Controller
             return back()->withInput();
         }
 
-        showSuccess(['Thanks for registering.']);
+        showSuccess(['Thanks for registering. You can now like and upload photos.']);
 
-        return redirect()->route('entries.popular');
+        return redirect()->route('home');
     }
 
     /**

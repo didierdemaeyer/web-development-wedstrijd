@@ -66,12 +66,12 @@
           {!! Form::text('address', null, ['id' => 'address', 'class' => 'form-control', 'placeholder' => 'Address']) !!}
         </div>
         <div class="form-group">
-          <label for="city">City</label>
-          {!! Form::text('city', null, ['id' => 'city', 'class' => 'form-control', 'placeholder' => 'City']) !!}
-        </div>
-        <div class="form-group">
           <label for="postcode">Postcode</label>
           {!! Form::text('postcode', null, ['id' => 'postcode', 'class' => 'form-control', 'placeholder' => 'Postcode']) !!}
+        </div>
+        <div class="form-group">
+          <label for="city">City</label>
+          {!! Form::text('city', null, ['id' => 'city', 'class' => 'form-control', 'placeholder' => 'City']) !!}
         </div>
         <div class="form-group">
           <label for="country">Country</label>

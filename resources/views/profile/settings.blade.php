@@ -49,19 +49,6 @@
           @endforeach
         @endif
       </div>
-      <div class="form-group{{ ($errors->has('city') ? ' has-error' : '') }}">
-        <label for="city">City {!! session('required_info') == 'full' ? '<span class="required" title="Required">*</span>' : ''  !!}</label>
-        @if(session('required_info') == 'full')
-          {!! Form::text('city', null, ['id' => 'city', 'class' => 'form-control', 'placeholder' => 'City', 'required']) !!}
-        @else
-          {!! Form::text('city', null, ['id' => 'city', 'class' => 'form-control', 'placeholder' => 'City']) !!}
-        @endif
-        @if ($errors->has('city'))
-          @foreach($errors->get('city') as $error)
-            <p class="error">{{ $error }}</p>
-          @endforeach
-        @endif
-      </div>
       <div class="form-group{{ ($errors->has('postcode') ? ' has-error' : '') }}">
         <label for="postcode">Postcode {!! session('required_info') == 'full' ? '<span class="required" title="Required">*</span>' : ''  !!}</label>
         @if(session('required_info') == 'full')
@@ -71,6 +58,19 @@
         @endif
         @if ($errors->has('postcode'))
           @foreach($errors->get('postcode') as $error)
+            <p class="error">{{ $error }}</p>
+          @endforeach
+        @endif
+      </div>
+      <div class="form-group{{ ($errors->has('city') ? ' has-error' : '') }}">
+        <label for="city">City {!! session('required_info') == 'full' ? '<span class="required" title="Required">*</span>' : ''  !!}</label>
+        @if(session('required_info') == 'full')
+          {!! Form::text('city', null, ['id' => 'city', 'class' => 'form-control', 'placeholder' => 'City', 'required']) !!}
+        @else
+          {!! Form::text('city', null, ['id' => 'city', 'class' => 'form-control', 'placeholder' => 'City']) !!}
+        @endif
+        @if ($errors->has('city'))
+          @foreach($errors->get('city') as $error)
             <p class="error">{{ $error }}</p>
           @endforeach
         @endif

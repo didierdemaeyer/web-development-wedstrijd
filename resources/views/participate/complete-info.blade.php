@@ -47,20 +47,20 @@
           @endforeach
         @endif
       </div>
-      <div class="form-group{{ ($errors->has('city') ? ' has-error' : '') }}">
-        <label for="city">City <span class="required" title="Required">*</span></label>
-        {!! Form::text('city', null, ['id' => 'city', 'class' => 'form-control', 'placeholder' => 'City', 'required']) !!}
-        @if ($errors->has('city'))
-          @foreach($errors->get('city') as $error)
-            <p class="error">{{ $error }}</p>
-          @endforeach
-        @endif
-      </div>
       <div class="form-group{{ ($errors->has('postcode') ? ' has-error' : '') }}">
         <label for="postcode">Postcode <span class="required" title="Required">*</span></label>
         {!! Form::text('postcode', null, ['id' => 'postcode', 'class' => 'form-control', 'placeholder' => 'Postcode', 'required']) !!}
         @if ($errors->has('postcode'))
           @foreach($errors->get('postcode') as $error)
+            <p class="error">{{ $error }}</p>
+          @endforeach
+        @endif
+      </div>
+      <div class="form-group{{ ($errors->has('city') ? ' has-error' : '') }}">
+        <label for="city">City <span class="required" title="Required">*</span></label>
+        {!! Form::text('city', null, ['id' => 'city', 'class' => 'form-control', 'placeholder' => 'City', 'required']) !!}
+        @if ($errors->has('city'))
+          @foreach($errors->get('city') as $error)
             <p class="error">{{ $error }}</p>
           @endforeach
         @endif
