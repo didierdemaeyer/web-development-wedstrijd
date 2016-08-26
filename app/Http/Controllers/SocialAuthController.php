@@ -36,9 +36,12 @@ class SocialAuthController extends Controller
     {
         $data = $service->createOrGetUser(Socialite::driver($provider));
 
-        if (isset($data['type']) && $data['type'] === 'access_denied') {
-            showErrors(['Account access denied. Please accept the information request.']);
-
+        if (isset($data['type'])) {
+            if ($data['type'] === 'access_denied') {
+                showErrors(['Account access denied. Please accept the information request.']);
+            } elseif ($data['type'] === 'user_disqualified') {
+                showErrors(['Your account has been disqualified. Please contact the administrator for further information.']);
+            }
             return redirect()->route('auth.login');
         }
 

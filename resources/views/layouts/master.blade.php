@@ -9,7 +9,7 @@
     <meta name="user-id" content="{{ \Auth::user()->id }}">
   @endif
 
-  <title>@yield('title', 'Photo Contest - The North Face')</title>
+  <title>@yield('title', 'Home') - Photo Contest The North Face</title>
 
   @include('includes.styles')
   @yield('styles')
@@ -43,7 +43,7 @@
           @if(\Auth::check())
             @if(\Auth::user()->isAdmin())
               <li class="dropdown{{ Request::is('admin/*') ? ' active' : '' }}">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin <span class="caret"></span></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin panel <span class="caret"></span></a>
                 <ul class="dropdown-menu">
                   <li><a {{ (Request::is('admin/entries/*') ? 'class=active' : '') }} href="{{ route('admin.entries', \App\ContestPeriod::getCurrentPeriod()->id) }}">Entries overview</a></li>
                   <li><a href="#">Action</a></li>

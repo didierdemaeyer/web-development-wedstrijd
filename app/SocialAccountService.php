@@ -36,10 +36,16 @@ class SocialAccountService
             ->first();
 
         if ($account) {
-            return [
-                'user' => $account->user,
-                'is_new' => false,
-            ];
+            if ($account->user) {
+                return [
+                    'user' => $account->user,
+                    'is_new' => false,
+                ];
+            } else {
+                return [
+                    'type' => 'user_disqualified',
+                ];
+            }
         } else {
 
             $account = new SocialAccount([

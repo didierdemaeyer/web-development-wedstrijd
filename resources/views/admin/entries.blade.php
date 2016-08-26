@@ -24,10 +24,10 @@
       @endforeach
     </div>
 
-    <table class="table table-striped">
+    <table id="entries-table" class="table table-striped">
       <thead>
         <tr>
-          <th>Photo</th>
+          <th></th>
           <th>
             Likes
             <div class="sort">
@@ -114,7 +114,7 @@
                 <i class="fa fa-chevron-down"></i>
               </a>
             </div>
-          <th>Actions</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -135,8 +135,8 @@
                   Actions <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-right">
-                  <li><a href="#">Delete photo</a></li>
-                  <li><a href="#">Disqualify user</a></li>
+                  <li><a class="delete-photo-button" href="#" data-delete-photo-url="{{ route('admin.delete-photo', $photo->id) }}">Delete photo</a></li>
+                  <li><a class="disqualify-user-button" href="#" data-disqualify-user-url="{{ route('admin.disqualify-user', $photo->user->id) }}">Disqualify user</a></li>
                 </ul>
               </div></td>
           </tr>
@@ -153,4 +153,13 @@
     </div>
 
   </div>
+@stop
+
+@section('scripts')
+  <script>
+    (function () {
+      TNF.addDeletePhotoClickListeners();
+      TNF.addDisqualifyUserClickListeners();
+    })();
+  </script>
 @stop

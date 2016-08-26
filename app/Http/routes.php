@@ -57,5 +57,7 @@ Route::group(['middelware' => 'web'], function () {
      */
     Route::group(['middleware' => 'auth.admin'], function () {
         Route::get('admin/entries/{perriod}', ['as' => 'admin.entries', 'uses' => 'AdminController@getEntries']);
+        Route::post('admin/delete-photo/{id}', ['as' => 'admin.delete-photo', 'uses' => 'AdminController@deletePhoto']);
+        Route::post('admin/disqualify-user/{id}', ['as' => 'admin.disqualify-user', 'uses' => 'AdminController@disqualifyUser']);
     });
 });

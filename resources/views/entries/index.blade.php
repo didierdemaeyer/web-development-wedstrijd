@@ -1,11 +1,11 @@
 @extends('layouts.master')
 
 @if(Request::is('entries/popular'))
-  @section('title', 'Popular entries - Photo Contest')
+  @section('title', 'Popular entries')
 @elseif(Request::is('entries/latest'))
-  @section('title', 'Latest entries - Photo Contest')
+  @section('title', 'Latest entries')
 @else
-  @section('title', 'Oldest entries - Photo Contest')
+  @section('title', 'Oldest entries')
 @endif
 
 @section('content')

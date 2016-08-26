@@ -3,15 +3,25 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Photo extends Model
 {
+    use SoftDeletes;
+
     /**
      * @var array
      */
     protected $fillable = [
         'url',
         'ip_address',
+    ];
+
+    /**
+     * @var array
+     */
+    protected $dates = [
+        'deleted_at'
     ];
 
     /**
@@ -28,15 +38,6 @@ class Photo extends Model
     public function likes()
     {
         return $this->belongsToMany('App\User', 'likes');
-    }
-
-    /**
-     * @param User $user
-     * @return bool
-     */
-    public function isLikedbyUser(User $user)
-    {
-        return count($this->likes->where('id', $user->id)->first());
     }
 
     /**
@@ -170,5 +171,14 @@ class Photo extends Model
         $currentContestPeriod = ContestPeriod::getCurrentPeriod();
 
         return ($this->created_at >= $currentContestPeriod->startdate) && ($this->created_at <= $currentContestPeriod->enddate);
+    }
+
+    /**
+     * @param User $user
+     * @return bool
+     */
+    public function isLikedbyUser(User $user)
+    {
+        return count($this->likes->where('id', $user->id)->first());
     }
 }

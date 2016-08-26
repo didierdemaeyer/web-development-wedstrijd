@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'Entries from ' . $selectedPeriod)
+@section('title', 'Entries from period ' . $selectedPeriod)
 
 @section('content')
   <div id="entries-container" class="archived-entries">

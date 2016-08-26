@@ -17,7 +17,7 @@ class CreatePhotosTable extends Migration
             $table->string('url');
             $table->string('ip_address');
             $table->integer('user_id')->unsigned();
-            $table->dateTime('deleted_at')->default(null);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

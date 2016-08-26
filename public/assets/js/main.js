@@ -47,6 +47,12 @@ var TNF = (function () {
         case 'unliked-photo':
           handlePhotoUnliked(response, button);
           break;
+        case 'deleted-photo':
+          handlePhotoDeleted(response, button);
+          break;
+        case 'disqualified-user':
+          handleUserDisqualified(response, button);
+          break;
       }
     })
     .fail(function(response) {
@@ -143,6 +149,26 @@ var TNF = (function () {
     });
   }
 
+  /* Add onClick listeners to delete photo buttons */
+  function addDeletePhotoClickListeners() {
+    $('.delete-photo-button').on('click', function (e) {
+      e.preventDefault();
+      var $btn = $(this);
+      var deletePhotoUrl = $btn.data('delete-photo-url');
+      sendPostRequest(deletePhotoUrl, [], 'deleted-photo', $btn);
+    });
+  }
+
+  /* Add onClick listeners to disqualify user buttons */
+  function addDisqualifyUserClickListeners() {
+    $('.disqualify-user-button').on('click', function (e) {
+      e.preventDefault();
+      var $btn = $(this);
+      var disqualifyUserUrl = $btn.data('disqualify-user-url');
+      sendPostRequest(disqualifyUserUrl, [], 'disqualified-user', $btn);
+    });
+  }
+
   /* Get the clients IP address */
   function getClientIpAddress() {
     $.getJSON("https://jsonip.com/?callback=?", function (data) {
@@ -202,7 +228,22 @@ var TNF = (function () {
     }
   }
 
+  /* Update stuff after a photo is deleted */
+  function handlePhotoDeleted(response, button) {
+    showNotification(response.type, response.messages[0]);
+  }
+
+  /* Update stuff after a user is disqualified */
+  function handleUserDisqualified(response, button) {
+    showNotification(response.type, response.messages[0]);
+  }
+
 
   init();
+
+  return {
+    addDeletePhotoClickListeners: addDeletePhotoClickListeners,
+    addDisqualifyUserClickListeners: addDisqualifyUserClickListeners
+  }
 })();
 //# sourceMappingURL=main.js.map

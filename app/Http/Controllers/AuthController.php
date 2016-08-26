@@ -30,6 +30,10 @@ class AuthController extends Controller
             return redirect()->intended('/');
         }
 
+        if (User::withTrashed()->where('email', $request->get('email'))->first()->trashed()) {
+            showErrors(['Your account has been disqualified. Please contact the administrator for further information.']);
+        }
+
         return redirect()->back()->withInput();
     }
 
