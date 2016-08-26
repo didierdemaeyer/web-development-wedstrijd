@@ -11,7 +11,7 @@
 
   <title>@yield('title', 'Home') - Photo Contest The North Face</title>
 
-  <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}">
+  <link rel="icon" href="{{ asset('assets/images/favicon.ico') }}">
   @include('includes.styles')
   @yield('styles')
 
