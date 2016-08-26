@@ -100,6 +100,14 @@ class User extends Authenticatable
     }
 
     /**
+     * @return bool
+     */
+    public function isAdmin()
+    {
+        return ($this->role->name == 'admin');
+    }
+
+    /**
      * @param $period
      * @param $perPage
      * @return mixed

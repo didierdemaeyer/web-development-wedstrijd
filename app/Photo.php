@@ -117,6 +117,52 @@ class Photo extends Model
     }
 
     /**
+     * @param $period
+     * @param $sort
+     * @param $order
+     * @param $perPage
+     * @return mixed
+     */
+    public static function getEntriesFromPeriodSortedBy($period, $sort, $order, $perPage)
+    {
+        $period = ContestPeriod::where('period_number', $period)->first();
+
+        if ($sort == 'likes') {
+            $results = Photo::leftJoin('likes', 'photos.id', '=', 'likes.photo_id')
+                ->where('photos.created_at', '>=', $period->startdate)
+                ->where('photos.created_at', '<=', $period->enddate)
+                ->selectRaw('photos.*, count(likes.photo_id) AS `count`')
+                ->groupBy('photos.id')
+                ->orderBy('count', $order)
+                ->paginate($perPage);
+        } elseif ($sort == 'date' || $sort == 'ip_address') {
+            $sort = ($sort == 'date') ? 'created_at' : 'ip_address';
+
+            $results = Photo::where('created_at', '>=', $period->startdate)
+                ->where('created_at', '<=', $period->enddate)
+                ->orderBy($sort, $order)
+                ->paginate($perPage);
+        } elseif($sort == 'country') {
+            $results = Photo::leftJoin('users', 'photos.user_id', '=', 'users.id')
+                ->leftJoin('countries', 'users.country_id', '=', 'countries.id')
+                ->where('photos.created_at', '>=', $period->startdate)
+                ->where('photos.created_at', '<=', $period->enddate)
+                ->orderBy('countries.name', $order)
+                ->paginate($perPage);
+        } else {
+            $sort = ($sort == 'name') ? 'firstname' : $sort;
+
+            $results = Photo::leftJoin('users', 'photos.user_id', '=', 'users.id')
+                ->where('photos.created_at', '>=', $period->startdate)
+                ->where('photos.created_at', '<=', $period->enddate)
+                ->orderBy('users.' . $sort, $order)
+                ->paginate($perPage);
+        }
+
+        return $results;
+    }
+
+    /**
      * @return bool
      */
     public function isFromCurrentPeriod()

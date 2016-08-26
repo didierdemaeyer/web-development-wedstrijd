@@ -18,7 +18,32 @@
   }
 
   .active a {
-    background-color: lighten($gray, 10%) !important;
+    background-color: lighten($gray, 10%);
+  }
+  
+  .nav .dropdown {
+
+    &.open > a,
+    &.open > a:hover,
+    &.open > a:focus {
+      background-color: lighten($gray, 10%);
+    }
+
+    .dropdown-menu {
+      background-color: lighten($gray, 10%);
+      border: none;
+      border-radius: 0;
+        
+      a:hover,
+      a:focus,
+      a.active {
+        background-color: lighten($gray, 20%);
+      }
+
+      .divider {
+        background-color: lighten($gray, 30%);
+      }
+    }
   }
 
   .container-fluid {

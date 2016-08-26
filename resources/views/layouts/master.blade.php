@@ -41,8 +41,23 @@
 
         <ul class="nav navbar-nav navbar-right">
           @if(\Auth::check())
-            <li {{ (Request::is('my-entries/*') ? 'class=active' : '') }}><a href="{{ route('profile.entries', \App\ContestPeriod::getCurrentPeriod()->id) }}">My entries</a></li>
-            <li {{ (Request::is('my-likes/*') ? 'class=active' : '') }}><a href="{{ route('profile.likes', \App\ContestPeriod::getCurrentPeriod()->id) }}">My likes</a></li>
+            @if(\Auth::user()->isAdmin())
+              <li class="dropdown{{ Request::is('admin/*') ? ' active' : '' }}">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a {{ (Request::is('admin/entries/*') ? 'class=active' : '') }} href="{{ route('admin.entries', \App\ContestPeriod::getCurrentPeriod()->id) }}">Entries overview</a></li>
+                  <li><a href="#">Action</a></li>
+                  <li><a href="#">Another action</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li><a href="#">Separated link</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li><a href="#">One more separated link</a></li>
+                </ul>
+              </li>
+            @else
+              <li {{ (Request::is('my-entries/*') ? 'class=active' : '') }}><a href="{{ route('profile.entries', \App\ContestPeriod::getCurrentPeriod()->id) }}">My entries</a></li>
+              <li {{ (Request::is('my-likes/*') ? 'class=active' : '') }}><a href="{{ route('profile.likes', \App\ContestPeriod::getCurrentPeriod()->id) }}">My likes</a></li>
+            @endif
             <li {{ (Request::is('settings') ? 'class=active' : '') }}><a href="{{ route('settings') }}">Settings</a></li>
             <li><a href="{{ route('auth.logout') }}">Logout</a></li>
           @else

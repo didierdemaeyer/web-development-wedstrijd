@@ -51,4 +51,11 @@ Route::group(['middelware' => 'web'], function () {
         Route::post('entries/like', ['as' => 'entries.like', 'uses' => 'EntriesController@likePhoto']);
         Route::post('entries/unlike', ['as' => 'entries.unlike', 'uses' => 'EntriesController@unlikePhoto']);
     });
+
+    /*
+     * Only for admins
+     */
+    Route::group(['middleware' => 'auth.admin'], function () {
+        Route::get('admin/entries/{perriod}', ['as' => 'admin.entries', 'uses' => 'AdminController@getEntries']);
+    });
 });
