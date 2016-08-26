@@ -28,7 +28,7 @@ class UsersTableSeeder extends Seeder
                 'firstname' => 'Admin',
                 'lastname' => '',
                 'email' => 'admin@tnf.be',
-                'password' => bcrypt('root'),
+                'password' => 'root',
                 'address' => 'Frans Cretenlaan 55',
                 'postcode' => '2627',
                 'city' => 'Schelle',

@@ -25,6 +25,7 @@ class CreateUsersTable extends Migration
             $table->integer('country_id')->unsigned();
             $table->integer('role_id')->unsigned();
             $table->rememberToken();
+            $table->dateTime('disqualified_at')->default(null);
             $table->timestamps();
         });
     }
