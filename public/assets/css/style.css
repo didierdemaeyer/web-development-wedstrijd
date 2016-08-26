@@ -7280,13 +7280,19 @@ hr {
         color: #E72B1E; }
       #admin-container .select-period a span {
         font-size: 12px; }
+  #admin-container .table-wrapper {
+    overflow-x: auto; }
   #admin-container .table {
     margin: 30px auto; }
+    #admin-container .table td {
+      vertical-align: middle; }
     #admin-container .table .sort a {
       text-decoration: none;
       color: #d1d1c6; }
       #admin-container .table .sort a.active {
         color: #E72B1E; }
+    #admin-container .table .btn-actions {
+      letter-spacing: 1px; }
   #admin-container .pagination-wrapper {
     display: block;
     width: 100%;

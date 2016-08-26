@@ -32,8 +32,15 @@
     }
   }
 
+  .table-wrapper {
+    overflow-x: auto;
+  }
   .table {
     margin: 30px auto;
+
+    td {
+      vertical-align: middle;
+    }
 
     .sort {
 
@@ -45,6 +52,10 @@
           color: $red;
         }
       }
+    }
+
+    .btn-actions {
+      letter-spacing: 1px;
     }
   }
 

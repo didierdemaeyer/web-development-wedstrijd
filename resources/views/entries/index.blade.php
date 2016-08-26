@@ -42,7 +42,7 @@
           </div>
         </div>
       @empty
-        <p>No entries</p>
+        <p style="text-align: center;">No entries yet</p>
       @endforelse
     </div>
 

@@ -11,6 +11,7 @@
 
   <title>@yield('title', 'Home') - Photo Contest The North Face</title>
 
+  <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}">
   @include('includes.styles')
   @yield('styles')
 
@@ -36,7 +37,9 @@
         <ul class="nav navbar-nav">
           <li {{ (Request::is('/') ? 'class=active' : '') }}><a href="{{ route('home') }}">Home</a></li>
           <li {{ (Request::is('entries/*') ? 'class=active' : '') }}><a href="{{ route('entries.popular') }}">Entries</a></li>
-          <li {{ (Request::is('archived-entries/*') ? 'class=active' : '') }}><a href="{{ route('entries.archived', \App\ContestPeriod::getPreviousPeriod()->id) }}">Archive</a></li>
+          @if(\App\ContestPeriod::getPreviousPeriod())
+            <li {{ (Request::is('archived-entries/*') ? 'class=active' : '') }}><a href="{{ route('entries.archived', \App\ContestPeriod::getPreviousPeriod()->id) }}">Archive</a></li>
+          @endif
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
@@ -45,13 +48,8 @@
               <li class="dropdown{{ Request::is('admin/*') ? ' active' : '' }}">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin panel <span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                  <li><a {{ (Request::is('admin/entries/*') ? 'class=active' : '') }} href="{{ route('admin.entries', \App\ContestPeriod::getCurrentPeriod()->id) }}">Entries overview</a></li>
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li role="separator" class="divider"></li>
-                  <li><a href="#">Separated link</a></li>
-                  <li role="separator" class="divider"></li>
-                  <li><a href="#">One more separated link</a></li>
+                  <li><a {{ (Request::is('admin/entries/*') ? 'class=active' : '') }} href="{{ route('admin.entries', \App\ContestPeriod::getCurrentPeriod()->id) }}">Manage entries</a></li>
+                  <li><a href="#">Manage users</a></li>
                 </ul>
               </li>
             @else
