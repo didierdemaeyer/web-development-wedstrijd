@@ -36,13 +36,14 @@
         <ul class="nav navbar-nav">
           <li {{ (Request::is('/') ? 'class=active' : '') }}><a href="{{ route('home') }}">Home</a></li>
           <li {{ (Request::is('entries/*') ? 'class=active' : '') }}><a href="{{ route('entries.popular') }}">Entries</a></li>
+          <li {{ (Request::is('archived-entries/*') ? 'class=active' : '') }}><a href="{{ route('entries.archived', \App\ContestPeriod::getPreviousPeriod()->id) }}">Archive</a></li>
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
           @if(\Auth::check())
-            <li><a href="{{ route('profile.entries', \App\ContestPeriod::getCurrentPeriod()->id) }}">My entries</a></li>
-            <li><a href="{{ route('profile.likes', \App\ContestPeriod::getCurrentPeriod()->id) }}">My likes</a></li>
-            <li><a href="{{ route('settings') }}">Settings</a></li>
+            <li {{ (Request::is('my-entries/*') ? 'class=active' : '') }}><a href="{{ route('profile.entries', \App\ContestPeriod::getCurrentPeriod()->id) }}">My entries</a></li>
+            <li {{ (Request::is('my-likes/*') ? 'class=active' : '') }}><a href="{{ route('profile.likes', \App\ContestPeriod::getCurrentPeriod()->id) }}">My likes</a></li>
+            <li {{ (Request::is('settings') ? 'class=active' : '') }}><a href="{{ route('settings') }}">Settings</a></li>
             <li><a href="{{ route('auth.logout') }}">Logout</a></li>
           @else
             <li><a href="{{ route('auth.login') }}">Login</a></li>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\ContestPeriod;
 use App\Photo;
 use App\User;
 use Illuminate\Http\Request;
@@ -16,7 +17,7 @@ class EntriesController extends Controller
      */
     public function getPopularEntries()
     {
-        $photos = Photo::getPhotosSortedByMostPopular();
+        $photos = Photo::getPhotosSortedByMostPopular(12);
 
         return view('entries.index', compact('photos'));
     }
@@ -28,7 +29,7 @@ class EntriesController extends Controller
      */
     public function getLatestEntries()
     {
-        $photos = Photo::getPhotosSortedByLatest();
+        $photos = Photo::getPhotosSortedByLatest(12);
 
         return view('entries.index', compact('photos'));
     }
@@ -40,11 +41,27 @@ class EntriesController extends Controller
      */
     public function getOldestEntries()
     {
-        $photos = Photo::getPhotosSortedByOldest();
+        $photos = Photo::getPhotosSortedByOldest(12);
 
         return view('entries.index', compact('photos'));
     }
 
+    /**
+     * @param $selectedPeriod
+     * @return mixed
+     */
+    public function getArchivedEntries($selectedPeriod)
+    {
+        $photos = Photo::getEntriesFromPeriod($selectedPeriod, 12);
+        $periods = ContestPeriod::getPreviousPeriods();
+
+        return view('entries.archived', compact('photos', 'periods', 'selectedPeriod'));
+    }
+
+    /**
+     * @param $id
+     * @return mixed
+     */
     public function show($id)
     {
         $photo = Photo::findOrFail($id);

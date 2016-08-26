@@ -42,43 +42,45 @@ class Photo extends Model
     /**
      * @return static
      */
-    public static function getPhotosSortedByMostPopular()
+    public static function getPhotosSortedByMostPopular($perPage)
     {
         $currentContestPeriod = ContestPeriod::getCurrentPeriod();
 
-        return Photo::with('likes')
-            ->where('created_at', '>=', $currentContestPeriod->startdate)
-            ->where('created_at', '<=', $currentContestPeriod->enddate)
-            ->get()
-            ->sortBy(function($photo) {
-                return $photo->likes->count();
-            }, null, true);
+        return Photo::leftJoin('likes', 'photos.id', '=', 'likes.photo_id')
+            ->where('photos.created_at', '>=', $currentContestPeriod->startdate)
+            ->where('photos.created_at', '<=', $currentContestPeriod->enddate)
+            ->selectRaw('photos.*, count(likes.photo_id) AS `count`')
+            ->groupBy('photos.id')
+            ->orderBy('count','DESC')
+            ->paginate($perPage);
     }
 
     /**
+     * @param $perPage
      * @return mixed
      */
-    public static function getPhotosSortedByLatest()
+    public static function getPhotosSortedByLatest($perPage)
     {
         $currentContestPeriod = ContestPeriod::getCurrentPeriod();
 
         return Photo::where('created_at', '>=', $currentContestPeriod->startdate)
             ->where('created_at', '<=', $currentContestPeriod->enddate)
             ->orderBy('created_at', 'DESC')
-            ->get();
+            ->paginate($perPage);
     }
 
     /**
+     * @param $perPage
      * @return mixed
      */
-    public static function getPhotosSortedByOldest()
+    public static function getPhotosSortedByOldest($perPage)
     {
         $currentContestPeriod = ContestPeriod::getCurrentPeriod();
 
         return Photo::where('created_at', '>=', $currentContestPeriod->startdate)
             ->where('created_at', '<=', $currentContestPeriod->enddate)
             ->orderBy('created_at', 'ASC')
-            ->get();
+            ->paginate($perPage);
     }
 
     /**
@@ -94,6 +96,24 @@ class Photo extends Model
             ->orderBy('created_at', 'DESC')
             ->take($amount)
             ->get();
+    }
+
+    /**
+     * @param $period
+     * @param $perPage
+     * @return mixed
+     */
+    public static function getEntriesFromPeriod($period, $perPage)
+    {
+        $period = ContestPeriod::where('period_number', $period)->first();
+
+        return Photo::leftJoin('likes', 'photos.id', '=', 'likes.photo_id')
+            ->where('photos.created_at', '>=', $period->startdate)
+            ->where('photos.created_at', '<=', $period->enddate)
+            ->selectRaw('photos.*, count(likes.photo_id) AS `count`')
+            ->groupBy('photos.id')
+            ->orderBy('count','DESC')
+            ->paginate($perPage);
     }
 
     /**

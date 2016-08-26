@@ -8,6 +8,10 @@ use App\Http\Requests;
 
 class ProfileController extends Controller
 {
+    /**
+     * @param $selectedPeriod
+     * @return mixed
+     */
     public function getMyEntries($selectedPeriod)
     {
         $user = \Auth::user();
@@ -17,6 +21,10 @@ class ProfileController extends Controller
         return view('profile.entries', compact('photos', 'periods', 'selectedPeriod'));
     }
 
+    /**
+     * @param $selectedPeriod
+     * @return mixed
+     */
     public function getMyLikes($selectedPeriod)
     {
         $user = \Auth::user();

@@ -11,6 +11,7 @@ Route::group(['middelware' => 'web'], function () {
     Route::get('entries/latest', ['as' => 'entries.latest', 'uses' => 'EntriesController@getLatestEntries']);
     Route::get('entries/oldest', ['as' => 'entries.oldest', 'uses' => 'EntriesController@getOldestEntries']);
     Route::get('entries/{id}', ['as' => 'entries.show', 'uses' => 'EntriesController@show']);
+    Route::get('archived-entries/{period}', ['as' => 'entries.archived', 'uses' => 'EntriesController@getArchivedEntries']);
 
     // Participate
     Route::get('participate', ['as' => 'participate', 'uses' => 'ParticipationController@getUploadPhoto']);

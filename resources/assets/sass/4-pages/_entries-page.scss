@@ -43,6 +43,13 @@
     }
   }
 
+  .pagination-wrapper {
+    display: block;
+    width: 100%;
+    padding: 0 40px;
+    text-align: center;
+  }
+
   // Show page
 
   .entry-show {
@@ -87,6 +94,53 @@
 
     @media (max-width: 1260px) {
       padding: 0 10px;
+    }
+  }
+
+  // Archived entries page
+
+  &.archived-entries {
+    padding: 20px 40px;
+
+    h1 {
+      font-size: 25px;
+      text-align: center;
+    }
+
+    .select-period {
+      display: block;
+      text-align: center;
+
+      a {
+        color: $gray;
+        padding: 5px;
+        margin: 0 10px;
+        font-size: 20px;
+
+        &:hover {
+          text-decoration: none;
+          color: $red;
+          border-bottom: 3px solid $red;
+        }
+
+        &.active {
+          color: $red;
+        }
+
+        span {
+          font-size: 12px;
+        }
+      }
+    }
+
+    .entries-list {
+      margin: 20px 0;
+    }
+
+    .pagination-wrapper {
+      display: block;
+      width: 100%;
+      text-align: center;
     }
   }
 }

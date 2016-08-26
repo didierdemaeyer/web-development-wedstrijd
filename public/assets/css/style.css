@@ -7131,6 +7131,12 @@ hr {
     #entries-container .sort-entries a.active {
       color: #E72B1E; }
 
+#entries-container .pagination-wrapper {
+  display: block;
+  width: 100%;
+  padding: 0 40px;
+  text-align: center; }
+
 #entries-container .entry-show {
   margin: 30px auto 10px; }
   #entries-container .entry-show h1 {
@@ -7163,10 +7169,42 @@ hr {
     #entries-container .photo {
       padding: 0 10px; } }
 
+#entries-container.archived-entries {
+  padding: 20px 40px; }
+  #entries-container.archived-entries h1 {
+    font-size: 25px;
+    text-align: center; }
+  #entries-container.archived-entries .select-period {
+    display: block;
+    text-align: center; }
+    #entries-container.archived-entries .select-period a {
+      color: #2A2A2A;
+      padding: 5px;
+      margin: 0 10px;
+      font-size: 20px; }
+      #entries-container.archived-entries .select-period a:hover {
+        text-decoration: none;
+        color: #E72B1E;
+        border-bottom: 3px solid #E72B1E; }
+      #entries-container.archived-entries .select-period a.active {
+        color: #E72B1E; }
+      #entries-container.archived-entries .select-period a span {
+        font-size: 12px; }
+  #entries-container.archived-entries .entries-list {
+    margin: 20px 0; }
+  #entries-container.archived-entries .pagination-wrapper {
+    display: block;
+    width: 100%;
+    text-align: center; }
+
 #profile-container {
   padding: 20px 40px; }
+  #profile-container h1 {
+    font-size: 25px;
+    text-align: center; }
   #profile-container .select-period {
-    display: block; }
+    display: block;
+    text-align: center; }
     #profile-container .select-period a {
       color: #2A2A2A;
       padding: 5px;
@@ -7182,6 +7220,10 @@ hr {
         font-size: 12px; }
   #profile-container .entries-list {
     margin: 20px 0; }
+  #profile-container .pagination-wrapper {
+    display: block;
+    width: 100%;
+    text-align: center; }
 
 #settings-container h1 {
   margin-top: 0; }

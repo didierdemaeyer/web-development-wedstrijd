@@ -45,5 +45,10 @@
         <p>No entries</p>
       @endforelse
     </div>
+
+    <div class="pagination-wrapper">
+      {{ $photos->links() }}
+    </div>
+
   </div>
 @stop
