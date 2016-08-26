@@ -34,8 +34,10 @@
       @forelse($photos as $photo)
         <div class="grid-item entry" style="background-image: url({{ $photo->url }})">
           <a href="{{ route('entries.show', $photo->id) }}"></a>
-          <div class="info">
-            <span class="like{{ (\Auth::check() && $photo->isLikedByUser(\Auth::user())) ? ' liked' : '' }}" data-photo-id="{{ $photo->id }}"></span>
+          <div class="info clearfix">
+            @if($photo->isFromCurrentPeriod())
+              <span class="like{{ (\Auth::check() && $photo->isLikedByUser(\Auth::user())) ? ' liked' : '' }}" data-photo-id="{{ $photo->id }}"></span>
+            @endif
             <span class="likes">{{ count($photo->likes) }} {{ count($photo->likes) == 1 ? 'Like' : 'Likes' }}</span>
           </div>
         </div>

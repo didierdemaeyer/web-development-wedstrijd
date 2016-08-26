@@ -7131,6 +7131,38 @@ hr {
     #entries-container .sort-entries a.active {
       color: #E72B1E; }
 
+#entries-container .entry-show {
+  margin: 30px auto 10px; }
+  #entries-container .entry-show h1 {
+    position: relative;
+    margin-top: 0; }
+  #entries-container .entry-show .info {
+    position: absolute;
+    font-size: 18px;
+    bottom: 0;
+    right: 0; }
+    #entries-container .entry-show .info .like {
+      cursor: pointer;
+      margin-right: 40px; }
+      #entries-container .entry-show .info .like:after {
+        content: 'Like'; }
+      #entries-container .entry-show .info .like.liked:after {
+        content: 'Liked';
+        color: #27ae60; }
+      #entries-container .entry-show .info .like.liked:hover:after {
+        content: 'Unlike';
+        color: #c0392b; }
+
+#entries-container .photo {
+  position: relative;
+  display: block;
+  max-width: 100%;
+  margin: 0 auto 40px;
+  padding: 0 50px; }
+  @media (max-width: 1260px) {
+    #entries-container .photo {
+      padding: 0 10px; } }
+
 #profile-container {
   padding: 20px 40px; }
   #profile-container .select-period {

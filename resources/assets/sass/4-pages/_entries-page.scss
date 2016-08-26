@@ -42,4 +42,51 @@
       }
     }
   }
+
+  // Show page
+
+  .entry-show {
+    margin: 30px auto 10px;
+
+    h1 {
+      position: relative;
+      margin-top: 0;
+    }
+
+    .info {
+      position: absolute;
+      font-size: 18px;
+      bottom: 0;
+      right: 0;
+
+      .like {
+        cursor: pointer;
+        margin-right: 40px;
+
+        &:after {
+          content: 'Like';
+        }
+        &.liked:after {
+          content: 'Liked';
+          color: $success;
+        }
+        &.liked:hover:after {
+          content: 'Unlike';
+          color: $error;
+        }
+      }
+    }
+  }
+
+  .photo {
+    position: relative;
+    display: block;
+    max-width: 100%;
+    margin: 0 auto 40px;
+    padding: 0 50px;
+
+    @media (max-width: 1260px) {
+      padding: 0 10px;
+    }
+  }
 }

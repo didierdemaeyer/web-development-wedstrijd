@@ -49,7 +49,7 @@ class EntriesController extends Controller
     {
         $photo = Photo::findOrFail($id);
 
-        dd($photo);
+        return view('entries.show', compact('photo'));
     }
 
     /**

@@ -47,8 +47,8 @@ class Photo extends Model
         $currentContestPeriod = ContestPeriod::getCurrentPeriod();
 
         return Photo::with('likes')
-            ->where('created_at', '>', $currentContestPeriod->startdate)
-            ->where('created_at', '<', $currentContestPeriod->enddate)
+            ->where('created_at', '>=', $currentContestPeriod->startdate)
+            ->where('created_at', '<=', $currentContestPeriod->enddate)
             ->get()
             ->sortBy(function($photo) {
                 return $photo->likes->count();
@@ -62,8 +62,8 @@ class Photo extends Model
     {
         $currentContestPeriod = ContestPeriod::getCurrentPeriod();
 
-        return Photo::where('created_at', '>', $currentContestPeriod->startdate)
-            ->where('created_at', '<', $currentContestPeriod->enddate)
+        return Photo::where('created_at', '>=', $currentContestPeriod->startdate)
+            ->where('created_at', '<=', $currentContestPeriod->enddate)
             ->orderBy('created_at', 'DESC')
             ->get();
     }
@@ -75,8 +75,8 @@ class Photo extends Model
     {
         $currentContestPeriod = ContestPeriod::getCurrentPeriod();
 
-        return Photo::where('created_at', '>', $currentContestPeriod->startdate)
-            ->where('created_at', '<', $currentContestPeriod->enddate)
+        return Photo::where('created_at', '>=', $currentContestPeriod->startdate)
+            ->where('created_at', '<=', $currentContestPeriod->enddate)
             ->orderBy('created_at', 'ASC')
             ->get();
     }
@@ -89,10 +89,20 @@ class Photo extends Model
     {
         $currentContestPeriod = ContestPeriod::getCurrentPeriod();
 
-        return Photo::where('created_at', '>', $currentContestPeriod->startdate)
-            ->where('created_at', '<', $currentContestPeriod->enddate)
+        return Photo::where('created_at', '>=', $currentContestPeriod->startdate)
+            ->where('created_at', '<=', $currentContestPeriod->enddate)
             ->orderBy('created_at', 'DESC')
             ->take($amount)
             ->get();
+    }
+
+    /**
+     * @return bool
+     */
+    public function isFromCurrentPeriod()
+    {
+        $currentContestPeriod = ContestPeriod::getCurrentPeriod();
+
+        return ($this->created_at >= $currentContestPeriod->startdate) && ($this->created_at <= $currentContestPeriod->enddate);
     }
 }

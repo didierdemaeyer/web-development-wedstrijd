@@ -36,8 +36,8 @@ class ContestPeriod extends Model
      */
     public static function getCurrentPeriod()
     {
-        return ContestPeriod::where('startdate', '<', Carbon::now())
-            ->where('enddate', '>', Carbon::now())
+        return ContestPeriod::where('startdate', '<=', Carbon::now())
+            ->where('enddate', '>=', Carbon::now())
             ->first();
     }
 
@@ -66,7 +66,7 @@ class ContestPeriod extends Model
      */
     public static function getCurrentAndPreviousPeriods()
     {
-        return ContestPeriod::where('startdate', '<', Carbon::now())
+        return ContestPeriod::where('startdate', '<=', Carbon::now())
             ->orderBy('startdate', 'ASC')
             ->get();
     }
