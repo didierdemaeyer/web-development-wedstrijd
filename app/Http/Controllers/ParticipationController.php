@@ -41,7 +41,9 @@ class ParticipationController extends Controller
             $destinationPath = config('uploads.entries.path');
             $sizes = config('uploads.entries.sizes');
 
-            $photo = new Photo();
+            $photo = new Photo([
+                'ip_address' => getClientIpAddress(),
+            ]);
             $img = \Image::make($file);
             $photo = $this->resizeAndSaveImages($img, $sizes, $destinationPath, $fileData['newFilename'], $fileData['extension'], $photo);
 
