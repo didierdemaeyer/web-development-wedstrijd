@@ -39,27 +39,45 @@
     position: relative;
     display: block;
     z-index: 2;
-    padding: 5px;
+    height: 35px;
+    padding: 5px 10px;
     background-color: $lightgray;
+    font-size: 18px;
 
     .like {
       cursor: pointer;
 
       &:after {
-        content: 'Like';
+        display: inline-block;
+        font-family: "FontAwesome";
+        content: '\f08a';
+        padding: 2px;
       }
       &.liked:after {
-        content: 'Liked';
-        color: $success;
-      }
-      &.liked:hover:after {
-        content: 'Unlike';
-        color: $error;
+        font-family: "FontAwesome";
+        content: '\f004';
+        color: $red;
+        animation: pop 0.2s ease;
       }
     }
 
     .likes {
       float: right;
     }
+  }
+}
+
+@keyframes pop {
+  0% {
+    font-size: 18px;
+    padding: 2px;
+  }
+  50% {
+    font-size: 20px;
+    padding: 0px;
+  }
+  100% {
+    font-size: 18px;
+    padding: 2px;
   }
 }

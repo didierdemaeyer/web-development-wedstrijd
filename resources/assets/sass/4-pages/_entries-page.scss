@@ -30,7 +30,6 @@
       margin: 0 10px;
       font-size: 25px;
 
-
       &:hover {
         text-decoration: none;
         color: $red;
@@ -68,19 +67,24 @@
 
       .like {
         cursor: pointer;
-        margin-right: 40px;
+        margin-right: 10px;
 
         &:after {
-          content: 'Like';
+          display: inline-block;
+          font-family: "FontAwesome";
+          content: '\f08a';
         }
         &.liked:after {
-          content: 'Liked';
-          color: $success;
+          font-family: "FontAwesome";
+          content: '\f004';
+          color: $red;
         }
-        &.liked:hover:after {
-          content: 'Unlike';
-          color: $error;
-        }
+      }
+
+      .likes {
+        display: inline-block;
+        min-width: 120px;
+        text-align: right;
       }
     }
   }

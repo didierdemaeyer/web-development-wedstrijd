@@ -107,7 +107,7 @@
         @endif
       </div>
 
-      <button type="submit" class="btn btn-default btn-submit">Save information</button>
+      <button type="submit" class="btn btn-default btn-submit">Update information</button>
       {!! Form::close() !!}
     </div>
 
