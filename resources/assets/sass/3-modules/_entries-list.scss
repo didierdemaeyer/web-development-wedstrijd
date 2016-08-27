@@ -1,6 +1,13 @@
 .entries-list {
   margin: 20px 40px;
 
+  @media all and (max-width: 800px) {
+    margin: 20px 20px;
+  }
+  @media all and (max-width: 600px) {
+    margin: 20px 10px;
+  }
+
   &::after {
     content:"";
     display:block;
@@ -10,8 +17,13 @@
   .grid-sizer,
   .grid-item {
     width: 23%;
-    margin: 0 1% 10px;
+    margin: 0 1% 20px;
     padding-top: 20%;
+    
+    @media all and (max-width: 950px) {
+      width: 48%;
+      padding-top: 40%;
+    }
   }
 
   .grid-sizer {
@@ -57,7 +69,7 @@
         font-family: "FontAwesome";
         content: '\f004';
         color: $red;
-        animation: pop 0.2s ease;
+        animation: pop 0.1s ease;
       }
     }
 

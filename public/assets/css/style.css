@@ -7265,6 +7265,12 @@ hr {
 
 .entries-list {
   margin: 20px 40px; }
+  @media all and (max-width: 800px) {
+    .entries-list {
+      margin: 20px 20px; } }
+  @media all and (max-width: 600px) {
+    .entries-list {
+      margin: 20px 10px; } }
   .entries-list::after {
     content: "";
     display: block;
@@ -7272,8 +7278,13 @@ hr {
   .entries-list .grid-sizer,
   .entries-list .grid-item {
     width: 23%;
-    margin: 0 1% 10px;
+    margin: 0 1% 20px;
     padding-top: 20%; }
+    @media all and (max-width: 950px) {
+      .entries-list .grid-sizer,
+      .entries-list .grid-item {
+        width: 48%;
+        padding-top: 40%; } }
   .entries-list .grid-sizer {
     display: none; }
   .entries-list .grid-item {
@@ -7308,7 +7319,7 @@ hr {
         font-family: "FontAwesome";
         content: '\f004';
         color: #E72B1E;
-        animation: pop 0.2s ease; }
+        animation: pop 0.1s ease; }
     .entries-list .info .likes {
       float: right; }
 
