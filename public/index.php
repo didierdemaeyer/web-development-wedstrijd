@@ -1,5 +1,11 @@
 <?php
 
+// TODO: Find better way to do this
+// Dirty fix for loading assets dynamicly over http or https on C9
+function asset($path) {
+    return '//' . $_SERVER['HTTP_HOST'] . '/' . trim($path, '/');
+}
+
 /**
  * Laravel - A PHP Framework For Web Artisans
  *
