@@ -45,7 +45,8 @@ Route::group(['middelware' => 'web'], function () {
 
         // Settings
         Route::get('settings', ['as' => 'settings', 'uses' => 'SettingsController@getSettings']);
-        Route::post('settings', ['as' => 'settings.post', 'uses' => 'SettingsController@postSettings']);
+        Route::post('settings/personal-information', ['as' => 'settings.information.post', 'uses' => 'SettingsController@updatePersonalInformation']);
+        Route::post('settings/change-password', ['as' => 'settings.password.post', 'uses' => 'SettingsController@changePassword']);
 
         // Entries
         Route::post('entries/like', ['as' => 'entries.like', 'uses' => 'EntriesController@likePhoto']);

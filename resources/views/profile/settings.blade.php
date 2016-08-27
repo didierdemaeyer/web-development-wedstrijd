@@ -6,9 +6,9 @@
   <div id="settings-container">
 
     <div class="form-container">
-      <h1 class="big">Settings</h1>
+      <h1 class="big">Personal information</h1>
 
-      {!! Form::model(\Auth::user(), ['route' => 'settings.post']) !!}
+      {!! Form::model(\Auth::user(), ['route' => 'settings.information.post']) !!}
       <div class="form-group{{ ($errors->has('firstname') ? ' has-error' : '') }}">
         <label for="firstname">First name <span class="required" title="Required">*</span></label>
         {!! Form::text('firstname', null, ['id' => 'firstname', 'class' => 'form-control', 'placeholder' => 'First name', 'required']) !!}
@@ -107,7 +107,53 @@
         @endif
       </div>
 
-      <button type="submit" class="btn btn-default btn-submit">Save settings</button>
+      <button type="submit" class="btn btn-default btn-submit">Save information</button>
+      {!! Form::close() !!}
+    </div>
+
+    <div class="form-container">
+
+      @if(\Auth::user()->getAuthPassword())
+        <h1 class="big">Change password</h1>
+      @else
+        <h1 class="big">Set password</h1>
+
+        <p>Set a password here to be able to log in with both your email/password combination and your social account.</p>
+      @endif
+
+      {!! Form::model(\Auth::user(), ['route' => 'settings.password.post']) !!}
+
+      @if(\Auth::user()->getAuthPassword())
+        <div class="form-group{{ ($errors->has('old_password') ? ' has-error' : '') }}">
+          <label for="old_password">Old password <span class="required" title="Required">*</span></label>
+          {!! Form::password('old_password', ['id' => 'old_password', 'class' => 'form-control', 'placeholder' => 'Old password', 'required']) !!}
+          @if ($errors->has('old_password'))
+            @foreach($errors->get('old_password') as $error)
+              <p class="error">{{ $error }}</p>
+            @endforeach
+          @endif
+        </div>
+      @endif
+      <div class="form-group{{ ($errors->has('new_password') ? ' has-error' : '') }}">
+        <label for="new_password">New password <span class="required" title="Required">*</span></label>
+        {!! Form::password('new_password', ['id' => 'new_password', 'class' => 'form-control', 'placeholder' => 'New password', 'required']) !!}
+        @if ($errors->has('new_password'))
+          @foreach($errors->get('new_password') as $error)
+            <p class="error">{{ $error }}</p>
+          @endforeach
+        @endif
+      </div>
+      <div class="form-group{{ ($errors->has('confirm_new_password') ? ' has-error' : '') }}">
+        <label for="confirm_new_password">Confirm new password <span class="required" title="Required">*</span></label>
+        {!! Form::password('confirm_new_password', ['id' => 'confirm_new_password', 'class' => 'form-control', 'placeholder' => 'Confirm new password', 'required']) !!}
+        @if ($errors->has('confirm_new_password'))
+          @foreach($errors->get('confirm_new_password') as $error)
+            <p class="error">{{ $error }}</p>
+          @endforeach
+        @endif
+      </div>
+
+      <button type="submit" class="btn btn-default btn-submit">Change password</button>
       {!! Form::close() !!}
     </div>
   </div>
