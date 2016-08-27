@@ -14,7 +14,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $photos = Photo::getLatestEntries(8);
+        $photos = Photo::getLatestEntries(4);
         $previousPeriods = ContestPeriod::getPreviousPeriods();
 
         return view('home', compact('photos', 'previousPeriods'));
