@@ -49,7 +49,7 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin panel <span class="caret"></span></a>
                 <ul class="dropdown-menu">
                   <li><a {{ (Request::is('admin/entries/*') ? 'class=active' : '') }} href="{{ route('admin.entries', \App\ContestPeriod::getCurrentPeriod()->id) }}">Manage entries</a></li>
-                  <li><a href="#">Manage users</a></li>
+                  {{--<li><a href="#">Manage users</a></li>--}}
                 </ul>
               </li>
             @else
