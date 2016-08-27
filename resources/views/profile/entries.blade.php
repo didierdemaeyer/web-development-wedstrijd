@@ -28,7 +28,7 @@
       <div class="grid-sizer"></div>
 
       @forelse($photos as $photo)
-        <div class="grid-item entry" style="background-image: url({{ $photo->url }})">
+        <div class="grid-item entry" style="background-image: url({{ $photo->url_small }})">
           <a href="{{ route('entries.show', $photo->id) }}"></a>
           <div class="info clearfix">
             @if($photo->isFromCurrentPeriod())

@@ -40,7 +40,7 @@
         <div class="grid-sizer"></div>
 
         @foreach($photos as $photo)
-          <div class="grid-item entry" style="background-image: url({{ $photo->url }})">
+          <div class="grid-item entry" style="background-image: url({{ $photo->url_small }})">
             <a href="{{ route('entries.show', $photo->id) }}"></a>
             <div class="info">
               <span class="like{{ (\Auth::check() && $photo->isLikedByUser(\Auth::user())) ? ' liked' : '' }}" data-photo-id="{{ $photo->id }}"></span>
@@ -59,7 +59,7 @@
 
         @foreach($previousPeriods as $previousPeriod)
           @if(count($previousPeriod->winning_photo))
-            <div class="grid-item entry" style="background-image: url({{ $previousPeriod->winning_photo->url }})">
+            <div class="grid-item entry" style="background-image: url({{ $previousPeriod->winning_photo->url_small }})">
               <a href="{{ route('entries.show', $previousPeriod->winning_photo->id) }}"></a>
               <div class="info">
                 <h5>Period {{ $previousPeriod->period_number }}: {{ $previousPeriod->startdate->format('d/m/y') }} - {{ $previousPeriod->enddate->format('d/m/y') }}</h5>

@@ -121,7 +121,7 @@
         <tbody>
           @forelse($photos as $photo)
             <tr>
-              <td><a class="fancybox" rel="group" href="{{ asset($photo->url) }}"><div class="photo" style="display: block; width: 100px; height: 100px; background-position: center center; background-size: cover; background-image: url({{ $photo->url }});"></div></a></td>
+              <td><a class="fancybox" rel="group" href="{{ asset($photo->url_large) }}"><div class="photo" style="display: block; width: 100px; height: 100px; background-position: center center; background-size: cover; background-image: url({{ $photo->url_small }});"></div></a></td>
               <td>{{ count($photo->likes) }}</td>
               <td>{{ $photo->created_at->format('Y/m/d H:i:s') }}</td>
               <td>{{ $photo->ip_address }}</td>

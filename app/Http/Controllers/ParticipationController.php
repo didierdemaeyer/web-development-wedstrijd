@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Country;
 use App\Http\Requests\UpdateSettingsFormRequest;
 use App\Http\Requests\UploadPhotoFormRequest;
+use App\Photo;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 
@@ -37,15 +38,14 @@ class ParticipationController extends Controller
         try {
             $file = $request->file('photo');
             $fileData = $this->getFileData($file);
-            $destinationPath = '/assets/images/uploads/entries';
-            $filename = $fileData['newFilename'] . '.' . $fileData['extension'];
+            $destinationPath = config('uploads.entries.path');
+            $sizes = config('uploads.entries.sizes');
 
-            $file->move(public_path($destinationPath), $filename);
-            
-            $photo = $user->photos()->create([
-                'url' => $destinationPath . '/' . $filename,
-                'ip_address' => getClientIpAddress(),
-            ]);
+            $photo = new Photo();
+            $img = \Image::make($file);
+            $photo = $this->resizeAndSaveImages($img, $sizes, $destinationPath, $fileData['newFilename'], $fileData['extension'], $photo);
+
+            $photo = $user->photos()->save($photo);
 
         } catch (\Exception $e) {
             showErrors(['Something went wrong! Please try again.']);
@@ -103,6 +103,30 @@ class ParticipationController extends Controller
     public function thankYou()
     {
         return view('participate.thank-you');
+    }
+
+    /**
+     * @param $img
+     * @param $sizes
+     * @param $destinationPath
+     * @param $newFilename
+     * @param $fileExtension
+     * @param $photo
+     * @return mixed
+     */
+    private function resizeAndSaveImages($img, $sizes, $destinationPath, $newFilename, $fileExtension, $photo)
+    {
+        foreach ($sizes as $key => $size) {
+            $img->resize($size, $size, function ($constraint) {
+                $constraint->aspectRatio();
+                $constraint->upsize();
+            });
+            $filename = $newFilename . '-' . $key . '.' . $fileExtension;
+            $img->save(public_path($destinationPath . '/' . $filename));
+            $photo->{'url_' . $key} = $destinationPath . '/' . $filename;
+        }
+
+        return $photo;
     }
 
     /**

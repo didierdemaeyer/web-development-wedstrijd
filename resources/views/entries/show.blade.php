@@ -18,7 +18,7 @@
 
     </div>
 
-    <img class="photo" src="{{ asset($photo->url) }}">
+    <img class="photo" src="{{ asset($photo->url_large) }}">
 
   </div>
 @stop
