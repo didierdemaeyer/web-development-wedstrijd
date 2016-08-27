@@ -153,7 +153,11 @@
         @endif
       </div>
 
-      <button type="submit" class="btn btn-default btn-submit">Change password</button>
+      @if(\Auth::user()->getAuthPassword())
+        <button type="submit" class="btn btn-default btn-submit">Change password</button>
+      @else
+        <button type="submit" class="btn btn-default btn-submit">Set password</button>
+      @endif
       {!! Form::close() !!}
     </div>
   </div>
