@@ -78,8 +78,7 @@
 
   <footer id="footer">
     <img class="footer-logo" src="{{ asset('assets/images/the-northface-logo-small.jpg') }}" alt="logo">
-    <a {{ (Request::is('/') ? 'class=active' : '') }} href="{{ route('home') }}">Home</a>
-    <a {{ (Request::is('entries/*') ? 'class=active' : '') }} href="{{ route('entries.popular') }}">Entries</a>
+    <span>Photo Contest The North Face&reg;</span>
   </footer>
 </div>
 

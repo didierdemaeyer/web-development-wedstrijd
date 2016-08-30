@@ -7111,12 +7111,9 @@ header {
   #footer .footer-logo {
     position: relative;
     height: 100px; }
-  #footer a {
-    margin: 0 20px;
-    color: #aaa;
-    text-decoration: none; }
-    #footer a.active {
-      color: #fff; }
+  #footer span {
+    margin-left: 15px;
+    color: #e8e8e2; }
 
 #notifications {
   position: fixed;
