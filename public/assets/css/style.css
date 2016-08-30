@@ -7313,26 +7313,13 @@ hr {
       .entries-list .info .like:after {
         display: inline-block;
         font-family: "FontAwesome";
-        content: '\f08a';
-        padding: 2px; }
+        content: '\f08a'; }
       .entries-list .info .like.liked:after {
         font-family: "FontAwesome";
         content: '\f004';
-        color: #E72B1E;
-        animation: pop 0.1s ease; }
+        color: #E72B1E; }
     .entries-list .info .likes {
       float: right; }
-
-@keyframes pop {
-  0% {
-    font-size: 18px;
-    padding: 2px; }
-  50% {
-    font-size: 20px;
-    padding: 0px; }
-  100% {
-    font-size: 18px;
-    padding: 2px; } }
 
 #auth-container .form-container {
   max-width: 500px;
