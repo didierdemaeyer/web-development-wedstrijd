@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Classes\ExportService;
 use App\ContestPeriod;
 use App\Photo;
 use App\User;
@@ -10,6 +11,21 @@ use App\Http\Requests;
 
 class AdminController extends Controller
 {
+    /**
+     * @var ExportService
+     */
+    private $exportService;
+
+    /**
+     * AdminController constructor.
+     *
+     * @param ExportService $exportService
+     */
+    public function __construct(ExportService $exportService)
+    {
+        $this->exportService = $exportService;
+    }
+    
     /**
      * @param $selectedPeriod
      * @param Request $request
@@ -104,5 +120,26 @@ class AdminController extends Controller
         }
 
         return $data;
+    }
+
+    /**
+     * @param $period
+     * @return mixed
+     */
+    public function exportPeriod($period)
+    {
+        $photos = Photo::getEntriesFromPeriodForExport($period);
+
+        return $this->exportService->createEntriesExcelExport($photos, 'Exports from period ' . $period . ' - TNF wedstrijd')->export('xls');
+    }
+
+    /**
+     * @return mixed
+     */
+    public function exportAll()
+    {
+        $photos = Photo::orderBy('created_at', 'ASC')->get();
+
+        return $this->exportService->createEntriesExcelExport($photos, 'All entries - TNF wedstrijd')->export('xls');
     }
 }

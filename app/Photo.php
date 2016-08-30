@@ -164,6 +164,32 @@ class Photo extends Model
     }
 
     /**
+     * @param $day
+     * @return mixed
+     */
+    public static function getEntriesFromDayForExport($day)
+    {
+        return Photo::where('created_at', '>=', $day . ' 00:00:00')
+            ->where('created_at', '<=', $day . ' 23:59:59')
+            ->orderBy('created_at', 'ASC')
+            ->get();
+    }
+
+    /**
+     * @param $period
+     * @return mixed
+     */
+    public static function getEntriesFromPeriodForExport($period)
+    {
+        $period = ContestPeriod::where('period_number', $period)->first();
+
+        return Photo::where('created_at', '>=', $period->startdate)
+            ->where('created_at', '<=', $period->enddate)
+            ->orderBy('created_at', 'ASC')
+            ->get();
+    }
+
+    /**
      * @return bool
      */
     public function isFromCurrentPeriod()

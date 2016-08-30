@@ -57,7 +57,9 @@ Route::group(['middelware' => 'web'], function () {
      * Only for admins
      */
     Route::group(['middleware' => 'auth.admin'], function () {
-        Route::get('admin/entries/{perriod}', ['as' => 'admin.entries', 'uses' => 'AdminController@getEntries']);
+        Route::get('admin/entries/export', ['as' => 'admin.entries.export-all', 'uses' => 'AdminController@exportAll']);
+        Route::get('admin/entries/{period}/export', ['as' => 'admin.entries.export-period', 'uses' => 'AdminController@exportPeriod']);
+        Route::get('admin/entries/{period}', ['as' => 'admin.entries', 'uses' => 'AdminController@getEntries']);
         Route::post('admin/delete-photo/{id}', ['as' => 'admin.delete-photo', 'uses' => 'AdminController@deletePhoto']);
         Route::post('admin/disqualify-user/{id}', ['as' => 'admin.disqualify-user', 'uses' => 'AdminController@disqualifyUser']);
     });

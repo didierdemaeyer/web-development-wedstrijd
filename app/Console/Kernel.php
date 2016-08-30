@@ -14,7 +14,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         Commands\SelectContestWinner::class,
-//        Commands\Inspire::class,
+        Commands\SendDailyEntriesExport::class,
     ];
 
     /**
@@ -25,7 +25,10 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-         $schedule->command('select-contest-winner')
-                  ->dailyAt('00:02');
+        $schedule->command('select-contest-winner')
+            ->dailyAt('00:02');
+
+        $schedule->command('send-daily-entries-export')
+            ->dailyAt('00:02');
     }
 }

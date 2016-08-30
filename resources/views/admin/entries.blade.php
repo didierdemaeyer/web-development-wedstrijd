@@ -23,6 +23,11 @@
         @endif
       @endforeach
     </div>
+    
+    <div class="export">
+      <a class="btn btn-default" href="{{ route('admin.entries.export-period', $selectedPeriod) }}">Export this period</a>
+      <a class="btn btn-default" href="{{ route('admin.entries.export-all') }}">Export all entries</a>
+    </div>
 
     <div class="table-wrapper">
       <table id="entries-table" class="table table-striped">
